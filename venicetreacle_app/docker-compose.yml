@@ -1,0 +1,54 @@
+volumes:
+  mariadb_data:
+  laravel-vendor:
+  laravel-node_modules:
+  laravel-public-build:
+
+networks:
+  appnet:
+
+services:
+  apache:
+    image: httpd:2.4
+    ports:
+      - "8888:80"
+      - "8443:443"
+    volumes:
+      - .:/var/www/venicetreacle/venicetreacle_app
+      - ../Website:/var/www/venicetreacle/Website
+      - ./docker/apache/vhosts.conf:/usr/local/apache2/conf/vhosts.conf
+      - ./docker/apache/vhosts-ssl.conf:/usr/local/apache2/conf/vhosts-ssl.conf
+      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/extra/httpd-custom.conf
+      - ./docker/certs:/usr/local/apache2/conf/certs
+    depends_on:
+      - php
+    networks:
+      - appnet
+    command: sh -c "echo 'Include conf/extra/httpd-custom.conf' >> /usr/local/apache2/conf/httpd.conf && httpd-foreground"
+
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/venicetreacle/venicetreacle_app
+      # Nick: to make the app run quickly, override the vendor folder with a named volume, so that it lives in the container
+      - laravel-vendor:/var/www/venicetreacle/venicetreacle_app/vendor
+      - laravel-node_modules:/var/www/venicetreacle/venicetreacle_app/node_modules
+      - laravel-public-build:/var/www/venicetreacle/venicetreacle_app/public/build
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini
+    networks:
+      - appnet
+
+  mariadb:
+    image: mariadb:10.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: yourrootpassword
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: yourpassword
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - appnet
