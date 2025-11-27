@@ -1,0 +1,54 @@
+Mondel Web Site
+
+1. are you using the browser dev tools to see in phone on desktop?
+
+2. CSS screen size rules
+
+.myTableBg{
+    text-align: center;
+    background: url(yellow80px.png) repeat;
+    border-collapse: collapse;
+    font-size: large;
+}
+
+.myTableBg td, .myTableBg th {
+    border:0;
+    padding:5px;
+}
+
+/* if the screen is < 480px wide e.g. portrait mobile use these rules as well or instead */
+
+@media (max-width: 480px) {
+    .myTableBg {
+        text-align: left;
+        background: none;
+        padding: 20px;
+        font-size: xx-large;
+        margin-left: 20px;
+    }
+    
+    .myTableBg td, .myTableBg th {
+        padding:20px;
+        margin-left: 20px;
+    }
+}
+
+
+Note to check mobile orientation rules
+Note that the width=80% is also a css rule!
+
+2. Make images as small as possible
+
+Slow load times really impact user experience, which Google penalises with poor SEO. This is a VERY slow page.
+
+You can get the same res with images a fraction of the size! Use your expensive tools such as photoshop
+
+Here is underpass.png with the same pixel ratio shrunk to 5ss kb which will load 7 times faster. you could also break it up into tiles
+
+3. Use divs instead of tables
+
+<table>s are meant for tabular data only. <div>s are meant for layout
+
+The nesting and weight of content is terrible for SEO
+
+4. Run the whole lot 

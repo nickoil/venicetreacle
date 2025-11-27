@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venice Treacle - Modern Elixir - Listen Now</title>
+
+    <!-- cache busting -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1828707244335050');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1828707244335050&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <script>
+        var $j = jQuery.noConflict();
+
+        treacleAlbum = {}
+        treacleAlbum.artist = "Venice Treacle"
+        treacleAlbum.albumTitle = "Modern Elixir"
+        treacleAlbum.releaseDate = "February, 03 2025 00:00:00 +0000"
+        treacleAlbum.daysUntilLive = -20
+        treacleAlbum.hyperfollowAlbumId = 27441924
+        treacleAlbum.artistNameShortcut = "venicetreacle"
+        treacleAlbum.albumIdShortcut = "modern-elixir"
+        treacleAlbum.releaseDateLocalTime = new Date(treacleAlbum.releaseDate);
+        //hyperAlbum.releaseDateLocalTime = new Date(moment(hyperAlbum.releaseDateLocalTime).local().format('YYYY-MM-DD HH:mm:ss'));
+        // hyperAlbum.releaseDateTimeZoneOffsetInMinutes = hyperAlbum.releaseDateLocalTime.getTimezoneOffset();
+        // hyperAlbum.releaseDateLocalTime = moment(hyperAlbum.releaseDateLocalTime).add(hyperAlbum.releaseDateTimeZoneOffsetInMinutes, 'm').toDate();
+        treacleAlbum.minutesUntilLiveInMyLocation = (treacleAlbum.releaseDateLocalTime - new Date)/1000/60;
+
+        function debug(message) {
+            console.log(message);
+        }
+
+        function facebookTrackEvent(action, param = {}) {
+
+            if (typeof fbq != 'undefined') {
+
+                var source = { source: 'modern-elixir' };
+                var input = { ...source, ...param};
+
+                fbq('trackCustom', action, input);
+            }
+        }
+
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: top;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0;
+        }
+        .album-cover {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+        h1 {
+            color: #333;
+            margin: 15px 0 5px;
+        }
+        h2 {
+            color: #333;
+            margin:0 0 5px;
+        }
+        p.description {
+            color: #333;
+            margin: 10px 0 20px;
+        }
+        .music-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #333;
+            background-color: white; /*#1DB954;*/
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow:0px 0px 25px rgba(0, 0, 0, 0.35);
+        }
+        .music-button img {
+            margin-right:0;
+            height: 24px;
+        }
+        .music-button:hover {
+            /*background-color: #1AA34A;*/
+            background-color:  #d3d3d3;;
+            color: #333;
+        }
+        .band-website {
+            display: block;
+            margin-top: 10px;
+            padding: 10px 0px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #7F7F7F;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow:0px 0px 25px rgba(0, 0, 0, 0.35);
+        }
+        .band-website:hover {
+            background-color: #555;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .social-icons a img {
+            height: 32px;
+        }
+        .social-icons a:hover {
+            color: #555;
+        }
+
+
+        .hyperShadow
+        {
+            box-shadow:0px 0px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .playTd {
+            border-radius: 0px 0px 0px 0px;
+            background: #FFFFFF;
+            width: 60px;
+        }
+
+        .playTd_multi {
+            border-radius: 0px 0px 0px 4px;
+            width: 90px;
+        }
+
+        .pointer {
+            cursor: pointer;
+        }
+
+        .blue {
+            color: #0F78B8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/venice_treacle_modern_elixir.webp" alt="Album Cover" class="album-cover">
+        
+        <div style="position: relative;box-sizing: border-box;margin:0;">
+            <script src="js/wavesurfer_pud.js"></script>
+            <style>
+                wave
+                {
+                    overflow: hidden !important;
+                    cursor: pointer;
+                }
+            </style>
+            <script type="text/javascript">
+                previewData = {};
+                previewData.tracks = JSON.parse( "\x5B\x7B\x22previewpcmdata\x22\x3A\x22\x22,\x22songid\x22\x3A46041176,\x22title\x22\x3A\x22Fabada\x22,\x22preview\x22\x3A\x22https\x3A\x2F\x2Fs3.amazonaws.com\x2Faudio.distrokid.com\x2Fpreview_68302445_03B06661\x2DFB7B\x2D4119\x2DAF32809F21F87AB2.mp3\x22\x7D,\x7B\x22previewpcmdata\x22\x3A\x22\x22,\x22songid\x22\x3A46041177,\x22title\x22\x3A\x22The\x20Glass\x22,\x22preview\x22\x3A\x22https\x3A\x2F\x2Fs3.amazonaws.com\x2Faudio.distrokid.com\x2Fpreview_68302446_03929084\x2DDFBF\x2D46CF\x2D8AF7C61887917299.mp3\x22\x7D,\x7B\x22previewpcmdata\x22\x3A\x22\x22,\x22songid\x22\x3A46041178,\x22title\x22\x3A\x22Boson\x20Black\x20Hole\x22,\x22preview\x22\x3A\x22https\x3A\x2F\x2Fs3.amazonaws.com\x2Faudio.distrokid.com\x2Fpreview_68302444_52DB8C79\x2D622A\x2D47A7\x2D8A3C73CFDA24ECDC.mp3\x22\x7D,\x7B\x22previewpcmdata\x22\x3A\x22\x22,\x22songid\x22\x3A46041175,\x22title\x22\x3A\x22Out\x20of\x20the\x20Eyes\x22,\x22preview\x22\x3A\x22https\x3A\x2F\x2Fs3.amazonaws.com\x2Faudio.distrokid.com\x2Fpreview_68302443_B7FE8CB6\x2DA5CF\x2D4715\x2D80E5F8203259283A.mp3\x22\x7D\x5D" ); 
+                console.log(previewData);
+            </script>
+            <script src="js/audio_preview.js"></script>
+            <div class="waveformContainer hyperShadow" style="height:48px;width:100%; left:0px;border-radius: 5px;overflow: hidden;">
+                <table cellpadding="0" cellspacing="0" width="100%" height="100%;">
+                    <tr>
+                        <td class="playTd" align="center" valign="middle">
+                            <div class="hyperfollowSongPreview" style="display: none;line-height: 48px;">
+                                <i onclick="stepBackward();" style="display:none;font-size: 18px;margin-right:6px;vertical-align: middle;" class="blue blueHoverHighlight fa fa-step-backward pointer controlsForMultiPlay backButtonWeCanClickIfVisible" aria-hidden="true"></i>
+                                <i onclick="hyperfollowTogglePlay();" style="font-size: 36px;vertical-align: middle;" class="blue blueHoverHighlight fa fa-play-circle pointer playButtonWeCanClickIfVisible" aria-hidden="true"></i>
+                                <i onclick="stepForward();" style="display:none;font-size: 18px;margin-left:6px;vertical-align: middle" class="blue blueHoverHighlight fa fa-step-forward skipForward controlsForMultiPlay pointer forwardButtonWeCanClickIfVisible" aria-hidden="true"></i>
+                            </div>
+                        </td>
+                        <td style="background: rgba(211, 211, 211, 0.5);font-weight:400;position: relative;">
+                            <div id="waveform" style="z-index: 100;"><span class="hfWaveformSpinner" style="z-index: 0; position: absolute;bottom: 25px;left: calc(50% - 60px);font-size: 12px;"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Generating waveform...</span></div>
+                                <div style="cursor: text; border-radius: 4px 0px 5px 0px;z-index: 200; position: absolute;bottom:0px;right: 0px;background: #FFFFFF;padding:5px;box-sizing: border-box;font-size: 8pt;">
+                                    <div style="max-width: 200px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;color:#333333;">
+                                        Preview<span class="previewTrackNumContainer"> <span class="previewTrackNum">1</span></span>: <span class="previewTrackTitle bold">Loading...</span>
+                                    </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <h1>Venice Treacle</h1>
+        <h2>Modern Elixir</h2>
+        <p class="description">Check out the debut EP from Venice Treacle on your favorite streaming platform</p>
+        
+        <a href="https://open.spotify.com/artist/3bWqCt417V9s9SryrvM1aq?si=hn5GudiSQLeKAWBJhC39Yw" target="_blank" class="music-button" data-service="spotify">
+            Listen on&nbsp;<img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_Green-300x82.png" alt="Spotify Logo">
+        </a>
+        <a href="https://venicetreacle.bandcamp.com" target="_blank" class="music-button" data-service="bandcamp">
+            Listen on&nbsp;<img src="media-icons/bandcamp-logotype-color-512.png" alt="Bandcamp Logo">
+        </a>
+        
+        <a href="https://music.apple.com/us/album/modern-elixir-ep/1793409540" target="_blank" class="music-button" data-service="apple-music">
+            Listen on&nbsp;<img src="media-icons/Apple_Music.svg" alt="Apple Music Logo" />&nbsp;Apple Music
+        </a>
+
+        <a href="https://soundcloud.com/venice-treacle/sets/modern-elixir" target="_blank" class="music-button" data-service="soundcloud">
+            Listen on&nbsp;<img src="media-icons/soundcloud_logo.svg" alt="SOUNDCLOUD Logo" style="height:1em;" />
+        </a>
+
+        <!--
+        <a href="https://venicetreacle.com" target="_blank" class="band-website" >
+            Visit Venice Treacle
+        </a>
+        -->
+        
+        <div class="social-icons">
+            <a class="social-icon" data-social="website" href="https://venicetreacle.com" target="_blank"><img src="images/venice_treacle_favicon.png" alt="Venice Treacle Logo" style="border-radius:5px;"></a>
+            <a class="social-icon" data-social="facebook" href="https://www.facebook.com/venicetreacle" target="_blank"><img src="media-icons/FB-colour.png" alt="Facebook Logo"></a>
+            <a class="social-icon" data-social="instagram" href="https://www.instagram.com/venicetreacle" target="_blank"><img src="media-icons/Insta-colour.svg" alt="Instagram Logo"></a>
+            <a class="social-icon" data-social="youtube" href="https://www.youtube.com/channel/UCeu6NytXoTmro6mzRVu9jqQ" target="_blank"><img src="media-icons/YouTube-colour.png" alt="YouTube Logo"></a>
+        </div>
+        
+    </div>
+
+    <!-- Conversion Pixel -->
+    <!-- this is a repeat
+    <script>
+        facebookTrackEvent('landedOnSmartLinks');
+    </script>
+    -->
+
+    <!-- Track Play Event Listeners -->
+    <script>
+        document.querySelectorAll('.music-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                if(service == 'spotify') {
+                    facebookTrackEvent('visitedService', { service: service });
+                }
+            });
+        });
+
+        /*
+        document.querySelectorAll('.social-icon').forEach(button => {
+            button.addEventListener('click', function() {
+                const social = this.getAttribute('data-social');
+                facebookTrackEvent('visitedSocial', { social: social });
+            });
+        });
+        */
+    </script>
+</body>
+</html>

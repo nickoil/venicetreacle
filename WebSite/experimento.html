@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="utf-8">
+
+<title>Venice Treacle The Band</title>
+
+<style>
+body {
+    background-color: white; /* Corrected color code */
+    margin: 0;
+    padding: 0;
+}
+
+body, td, th {
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+img {width:100%;
+	}
+
+h3 {font-size: medium;
+}
+
+.myDivBg {
+    background-color: #C4C4C4;
+	text-align: center;
+    font-size: large;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+.myDivBgH {
+    background-color: #ffcc66;
+	text-align: center;
+    font-size: large;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+
+.myDivBgP {
+
+    text-align: center;
+    font-size: large;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 auto;
+	background-color: #ffcc66;
+}
+
+.myDivBgP:hover {
+
+	background-color: #ffeecc;
+	}
+
+
+.myDivBg div {
+    padding: 5px;
+}
+
+.flex-container {
+    background-color: #C4C4C4;
+	display: flex;
+    justify-content: center;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.horizontal-divs > div {
+       background-color: #C4C4C4;
+	   display: inline-block;
+       width: 80px; /* Adjust width as needed */
+	}
+
+/* Media query for screens wider than 500px */
+@media screen and (min-width: 501px) {
+    .myDivBgH  {
+        width: 80%; /* Adjust the width for larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+    .myDivBg img {
+        width: 80%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+    .myDivBg {
+        width: 80%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+	 .myDivBgP {
+        width: 80%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+	 .myDivBgP:hover {
+        width: 80%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+	.flex-container {
+		width: 80%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+	}
+
+	h3 {font-size: x-large;
+}
+
+}
+
+/* Media query for screens up to 500px */
+@media screen and (max-width: 500px) {
+    .myDivBg
+	{
+        width: 95%; /* Occupies full width on smaller screens */
+    }
+
+	.myDivBgH
+	{
+        width: 95%; /* Occupies full width on smaller screens */
+    }
+
+	.flex-container
+	{
+        width: 95%; /* Occupies full width on smaller screens */
+    }
+
+	 .myDivBgP {
+        width: 95%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+		background-color:#ffcc66;
+    }
+}
+
+.textOnImageContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.textOnImage {
+	font-size:4em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0 0 7% 13%; /* Optional: Add padding to the text */
+  width:50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="myDivBg">
+	<div class="textOnImageContainer">
+		<img src="heads_banner_small_gif.gif"  alt="">
+		<div class="textOnImage">VeniceTreacle</div>
+	</div>
+</div>
+
+
+<!-- Container for social media icons and links -->
+<div class="flex-container">
+	<div class="horizontal-divs">
+   <div> <a href="https://venicetreacle.bandcamp.com/track/vt-medley" target="_blank">
+    <img src="BC.svg" alt="" width="80" height="80"></a></div>
+
+	<div><a href="https://www.facebook.com/venicetreacle" target="_blank">
+    <img src="FB.svg" alt="" width="80" height="80"></a></div>
+
+	<div><a href="https://www.instagram.com/venicetreacle/" target="_blank">
+        <img src="Insta.svg" alt="" width="80" height="80"></a></div>
+</div>
+	</div>
+
+	<div class="myDivBg"></div>
+
+<div class="myDivBgH">
+    <h3>&apos;<em>it sounds so wrong yet so right&apos; - B. Ming</em></h3>
+    <p><h3><em>&apos;a panacea for our time&apos; - The Guardian&nbsp;</em></h3></p>
+</div>
+
+<div class="myDivBg"></div>
+
+<div class="myDivBg">
+	No Wave Quank from Bristol, Exeter, and St Agnes.<p></p>
+    Musical serum concocted from members of Penelope Quiche, Attack Horse, Pons Buffalo, and Jizz Circus.
+</div>
+
+<div class="myDivBg"></div>
+
+<div class="myDivBg">
+    <img src="quank.svg" width="213" height="81" alt="">
+</div>
+
+<div class="myDivBg">
+  <audio title="Medley" controls="controls" >
+    <source src="VeniceTreacleMedley.mp3" type="audio/mp3">
+  </audio>
+</div>
+
+<div class="myDivBg">
+  <img src="exchange.jpg" alt="">
+</div>
+
+<div class="myDivBg">
+    <img src="showfests.svg" width="310" height="96" alt="">
+</div>
+
+<div class="myDivBg">
+	Friday 23 February 2024<p>The Three Horseshoes, Bradford on Avon</p>
+</div>
+
+<div class="myDivBg">
+    <p></p>
+</div>
+
+<div class="myDivBg">
+    <img src="contact.svg" width="245" height="81" alt="">
+</div>
+
+<div class="myDivBg">
+    mplasmid@hotmail.com
+</div>
+
+<div class="myDivBg">
+    <p></p>
+</div>
+
+<div class="myDivBgP">
+   <a href="/venice-treacle-the-game" target="_self"> <img src="playthegame.svg" width="477" height="98" alt="">
+		</a>
+
+	</div>
+	<div class="myDivBg">
+    <p></p>
+</div>
+<div class="myDivBg">
+    <p></p>
+</div>
+
+</body>
+</html>

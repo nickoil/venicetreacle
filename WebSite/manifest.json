@@ -1,0 +1,27 @@
+{
+    "name": "Venice Treacle",
+    "short_name": "Venice Treacle",
+    "description": "Venice Treacle, purveyors of the finest Quankrock",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#3E7258",
+    "theme_color": "#FFCC66",
+    "icons": [
+      {
+        "src": "/app_images/mondel_192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/app_images/mondel_512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "/app_images/mondel_192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable"
+      }
+    ]
+  }

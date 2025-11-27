@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FFCC66" />
+    <title>Venice Treacle</title>
+
+    <!-- cache busting -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
+
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+
+    <style>
+
+        @font-face {
+            font-family: 'Harlow Solid LET Plain:1.0';
+            font-style: normal;
+            font-weight: normal;
+            src: local('fonts/Harlow Solid LET Plain:1.0'), url('fonts/Harlow Solid LET Plain1.0.woff') format('woff');
+        }
+
+        html { 
+            html{scroll-behavior: smooth !important;} 
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+        }
+        .container {
+            max-width: 960px;
+            width: 100%;
+            padding: 0px;
+            /*box-sizing: border-box;*/
+            background-color: #CC99DD;
+            
+        }
+        a {
+            color: #551A8B !important; /*#043B35*/
+        }
+        a:visited {
+            color: #551A8B !important;
+        }
+
+        img, video, iframe {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .vt-banner {
+            margin-bottom: 10px !important;
+        }
+        @media (max-width: 600px) {
+            .vt-banner {
+                margin-bottom: 5px !important;
+            }
+        }
+        audio {
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        .auto-resizable-iframe {
+            max-width: 960px;
+            margin: 0px auto 20px auto;
+        }
+        .auto-resizable-iframe > div {
+            position: relative;
+            padding-bottom: 50%;
+            height: 0px;
+        }
+        .auto-resizable-iframe iframe {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-media img {
+            width: 80px;
+            height: 80px;
+            margin-bottom:0; /*remove when followed by image or vid*/
+        }
+        .social-white-circle {
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            width: 60px; 
+            height: 60px; 
+            background-color: white; 
+            border-radius: 50%; 
+            transform: translate(-50%, -50%);
+        }
+        @media (max-width: 600px) {
+            .social-media {
+                gap: 10px;
+            }
+            .social-media img {
+                width: 60px;
+                height: 60px;
+            }
+            .social-white-circle {
+                width: 50px; 
+                height: 50px; 
+            }
+        }
+
+        .harlow-subtitle {
+            font-family: 'Harlow Solid LET Plain:1.0';
+            font-size: 5em;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: black;
+            color: #CBEFFE;
+            text-align:center;
+            margin:0;
+        }
+        @media (max-width: 600px) {
+            .harlow-subtitle {
+                font-size: 4em;
+            }
+        }
+        @media (max-width: 400px) {
+            .harlow-subtitle {
+                font-size: 3em;
+            }
+        }
+        /*
+        .coming-up-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            justify-items: center;
+            margin: 0 20px;
+        }*/
+		.coming-up-images {
+			grid-template-columns: 1fr !important;
+			gap:0 !important;
+			margin: 0 100px;
+		}
+        .coming-up-images img {
+            width: 100%;
+            height: auto;
+        }
+        @media (max-width: 600px) {
+            .coming-up-images {
+                grid-template-columns: 1fr !important;
+                gap:0 !important;
+                margin: 0;
+            }
+        }
+        .vt-text {
+            text-align: center;
+            margin: 20px;
+            font-size: 1.5em;
+        }
+        @media (max-width: 600px) {
+            .vt-text {
+                margin: 20px;
+                font-size: 1em;
+            }
+        }
+        .vt-text.email {
+            font-size: 2em !important;
+            margin:0 20px 30px 20px !important;
+        }
+
+        .vt-nav {
+            position: -webkit-sticky; 
+            position: sticky; 
+            top: 0; 
+            background-color: #CC99DD; 
+            z-index: 1000;
+            text-align: center;
+            margin: 0 0 20px 0 ;
+            font-size: 1.5em; 
+        }
+        @media (max-width: 600px) {
+            .vt-nav {
+                margin: 0 0 10px 0 ;
+                font-size: 1em;
+            }
+        }
+        .vt-nav-link {
+            text-align: center;
+            /*margin: 20px 0;*/
+            padding: 10px ;
+            display: inline-block;
+            /*text-decoration: none;*/
+            background-color: #CC99DD;
+        }
+        @media (max-width: 600px) {
+            .vt-nav-link {
+                padding: 10px 5px ;
+            }
+        }
+        .vt-nav-link:hover {
+            background-color: #b380cc;
+        }
+        .vt-nav-link:active {
+            background-color: #9966b3;
+            
+        }
+        .vt-button-link {
+            text-align: center;
+            /*margin: 20px 0;*/
+            padding: 30px 0 20px 0;
+            display: block;
+            text-decoration: none;
+            background-color: #CC99DD;
+        }
+        .vt-button-link:hover {
+            background-color: #b380cc;
+        }
+        .vt-button-link:active {
+            background-color: #9966b3;
+        }
+        .vt-button-link.yellow {
+            background-color: #ffcc66;
+        }
+        .vt-button-link.yellow:hover {
+            background-color: #e6b84d;
+        }
+        .vt-button-link.yellow:active {
+            background-color: #cc9933;
+        }
+
+        #install-button-container {
+            text-align:center;
+            margin-bottom:20px;
+            display:none;
+        }
+
+        #install-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 22px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #install-button:hover {
+            background-color: #45a049;
+        }
+
+        #install-button-container a {
+            font-size:16px;
+        }
+
+    </style>
+
+    <script>
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI notify the user they can install the PWA
+            const installButton = document.getElementById('install-button');
+            installButton.hidden = false;
+
+            installButton.addEventListener('click', (e) => {
+                // hide our user interface that shows our A2HS button
+                installButton.hidden = true;
+                // Show the prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                    } else {
+                    console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+
+        window.onload = function() {
+
+            const pageContainer = document.getElementById('page-container');
+            const spaceAboveTarget = 50;
+
+            document.querySelectorAll('.vt-nav-link').forEach(link => {
+                link.addEventListener('click', function(event) {
+
+                    let scrollSpeed = 50;
+                    
+                    const href= this.getAttribute('href');
+                    if(href === '#') {
+                        return;
+                    }
+                    if(href.charAt(0) !== '#') {
+                        return;
+                    }
+                    event.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById('target-' + targetId);
+                    if (targetElement) {
+                        const scrollHeight = targetElement.offsetTop - spaceAboveTarget;
+                        let scrollPosition = pageContainer.scrollTop;
+                        console.log(scrollPosition);
+                        const scrollInterval = setInterval(() => {
+                            scrollPosition += scrollSpeed;
+                            window.scrollTo({ top: scrollPosition, behavior: "smooth" });
+                            pageContainer.scrollTo(0, scrollPosition);
+                            console.log(pageContainer.scrollTop);
+                            if (scrollPosition >= scrollHeight) {
+                                clearInterval(scrollInterval);
+                            }
+                            else {
+                                //approach the target slowly
+                                if (scrollPosition >= scrollHeight - 50){
+                                    scrollSpeed = 10;
+                                }
+                            }
+                        }, 10); // adjust the interval time here
+                    }
+                });
+            });
+
+            let installMode = false;
+            const urlParams = new URLSearchParams(window.location.search);
+            installMode = urlParams.has('install');
+
+            function isSafari() {
+                //console.log(navigator.userAgent);
+                //console.log(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+                return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            }
+
+            if(installMode && !isSafari()) {
+                //show the install button container
+                document.getElementById('install-button-container').style.display = 'block';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let player = videojs("mmi-stagnes");
+            player.ready(function () {
+                player.currentTime(11.8);
+            });
+        });        
+
+    </script>
+</head>
+<body>
+    <div class="container" id="page-container">
+        <img class="vt-banner" src="images/venice_treacle_banner.png" alt="Venice Treacle Band" title="Venice Treacle Band">
+        <div class='vt-nav' >
+            <a href="#" class="vt-nav-link">Home</a>
+            <a href="#releases" class="vt-nav-link">Releases</a>
+            <a href="#gigs" class="vt-nav-link">Gigs</a>
+            <a href="#quank" class="vt-nav-link">Quank</a>
+            <a href="#contact" class="vt-nav-link">Contact</a>
+            <a href="press_pack.pdf" class="vt-nav-link" target="_blank">Press</a>
+        </div>
+        <div id="install-button-container">
+            <button id="install-button" hidden>Install the Venice Treacle app</button>
+            <div><a href="/">Continue without installing the app</a></div>
+        </div>
+        <div class="social-media">
+            <a href="https://venicetreacle.bandcamp.com/album/modern-elixir" target="_blank">
+                <img src="media-icons/BC.svg" alt="Bandcamp" >
+            </a>
+            <a href="https://open.spotify.com/artist/3bWqCt417V9s9SryrvM1aq?si=hn5GudiSQLeKAWBJhC39Yw" target="_blank" style="position: relative; display: inline-block;">
+                <div class="social-white-circle"></div>
+                <img src="media-icons/spotify.png" alt="Spotify" style="position: relative;">
+            </a>
+            <a href="https://www.facebook.com/venicetreacle" target="_blank">
+                <img src="media-icons/FB.svg" alt="Facebook ">
+            </a>
+            <a href="https://www.instagram.com/venicetreacle/" target="_blank">
+                <img src="media-icons/Insta.svg" alt="Instgram">
+            </a>
+            <a href="https://www.youtube.com/channel/UCeu6NytXoTmro6mzRVu9jqQ" target="_blank">
+                <img src="media-icons/youtube_icon.webp" alt="YouTube" >
+            </a>
+        </div>
+        <!--
+        <div class="auto-resizable-iframe">
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6C5UgMRSNXc?si=R7yUDaBGOgZWSnWd&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        -->
+        <div class="vt-text">
+			<p>Make yourself well with our debut EP <a href="https://venicetreacle.bandcamp.com/album/modern-elixir" target="_blank">Modern Elixir</a></p>
+        </div>
+        <video
+            id="tamzma-session"
+            poster=""
+            class="video-js vjs-fluid"
+            controls
+            width="560" height="315"
+            data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/embed/6C5UgMRSNXc?si=R7yUDaBGOgZWSnWd&rel=0"}], "youtube": { "start": 1743 } }'
+        >
+        </video>
+        <div class="vt-text">
+            <p>Venice Treacle distorts the four-piece boy band with right-angled riffs over rapturous rhythms to make dance punk psychedelia for our confusing times.</p>
+        </div>
+        <h2 class="harlow-subtitle" style="margin-bottom:20px;" id="target-releases">
+			Releases
+		</h2>
+
+		<div class="coming-up-images">
+			<a href="https://venicetreacle.bandcamp.com/album/modern-elixir" target="_blank">
+				<img src="images/venice_treacle_modern_elixir.webp" alt="Modern Elixir EP">
+			</a>
+        </div>
+
+        <!--
+        <div style="display: flex; justify-content: center;">
+            <img src="quank.svg" alt="Quank Rock" title="Quank Rock" style="width: 213px;">
+        </div>
+        -->
+        <!-- temporarily withdrawn -->
+        <h2 class="harlow-subtitle" style="margin-bottom:20px;" id="target-gigs">
+            Coming up ...
+        </h2>
+       
+<div class="coming-up-images">
+			<a href="https://eventbrite.co.uk/e/scouting-session-tickets-1230082623239" target="_blank">
+				<img src="images/venice-treacle-fleece-2025-03-30.jpg" alt="Venice Treacle live at the Fleece, Bristol">
+			</a>
+        </div>
+
+ <!--
+	 <div class="coming-up-images">
+			<a href="https://wegottickets.com/exetercavern/event/648631" target="_blank">
+				<img src="images/venice-treacle-cavern-2025-02-15.jpg" alt="Venice Treacle live at the Cavern, Exeter">
+			</a>
+        </div>
+	-->
+
+        <!--
+        <div class="coming-up-images">
+            <a class="left-image" href="https://exeterphoenix.org.uk/events/new-band-showcase/" target="_blank">
+                <img src="images/new-band-showcase-2025-01-24.png" alt="Venice Treacle live at the Phoenix">
+            </a>
+
+            <a href="">
+            	<img src="images/venice_treacle_modern_elixir.webp" alt="Modern Elixir EP">
+            </a>
+        </div>
+        -->
+        <h2 class="harlow-subtitle" id="target-quank">
+            Quank
+        </h2>
+        <div style="display: flex; justify-content: center;">
+            <audio title="Medley" controls="controls">
+                <source src="VeniceTreacleMedley.mp3" type="audio/mp3">
+            </audio>
+        </div>
+        <div style="margin-bottom:20px;">
+            <video id="mmi-stagnes" class="video-js vjs-fluid" controls preload="metadata" data-setup="{}" >
+                <source src="/videos/venice-treacle-st-agnes-mmi-20240427.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <h2 class="harlow-subtitle" id="target-contact">
+            Contact
+        </h2>
+        <div class="vt-text email" >
+            <a href="mailto:mplasmid@hotmail.com">mplasmid@hotmail.com</a>
+        </div>
+        <a href="/venice-treacle-the-game" target="_self" class="vt-button-link yellow" >
+            <h2 class="harlow-subtitle" >
+                Play the Game
+            </h2>
+		</a>
+        <a href="/venice-treacle-hq" target="_self" class="vt-button-link" style="margin-bottom:30px;">
+            <h2 class="harlow-subtitle" style="margin-bottom:500px;">
+                Visit the Shop
+            </h2>
+		</a>
+    </div>
+    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-youtube@3.0.1/dist/Youtube.min.js"></script>
+</body>
+</html>

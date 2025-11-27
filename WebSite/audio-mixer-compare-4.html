@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Mix Comparator - 4 Tracks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .drop-zones {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .mix-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .drop-zone {
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            padding: 30px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .drop-zone:hover {
+            border-color: #667eea;
+            background: #f0f1ff;
+        }
+
+        .drop-zone.active {
+            border-color: #667eea;
+            background: #e8eaff;
+            transform: scale(1.02);
+        }
+
+        .drop-zone.loaded {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .drop-zone-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .drop-zone-text {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #28a745;
+            font-weight: bold;
+            word-break: break-all;
+        }
+
+        .mix-toggle-btn {
+            padding: 12px 20px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            color: #667eea;
+        }
+
+        .mix-toggle-btn:hover:not(:disabled) {
+            background: #f0f1ff;
+            transform: scale(1.02);
+        }
+
+        .mix-toggle-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .mix-toggle-btn.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .playback-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .play-btn {
+            background: #28a745;
+        }
+
+        .play-btn:hover:not(:disabled) {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        .pause-btn {
+            background: #ffc107;
+        }
+
+        .pause-btn:hover:not(:disabled) {
+            background: #e0a800;
+            transform: scale(1.05);
+        }
+
+        .stop-btn {
+            background: #dc3545;
+        }
+
+        .stop-btn:hover:not(:disabled) {
+            background: #c82333;
+            transform: scale(1.05);
+        }
+
+        .current-mix {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .progress-container {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .volume-control label {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .volume-slider {
+            width: 200px;
+            height: 6px;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #e0e0e0;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
+        .volume-value {
+            font-weight: bold;
+            color: #333;
+            min-width: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .drop-zones {
+                grid-template-columns: 1fr;
+            }
+
+            .playback-controls {
+                flex-wrap: wrap;
+            }
+
+            button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Nick Oil's Remarkable Audio Mix Comparator - 4 Tracks</h1>
+        
+        <div class="drop-zones">
+            <div class="mix-container">
+                <div class="drop-zone" id="dropZone1" data-mix="1">
+                    <div class="drop-zone-label">Mix 1</div>
+                    <div class="drop-zone-text">Drag & Drop or Click</div>
+                    <div class="file-name" id="fileName1"></div>
+                    <input type="file" id="fileInput1" accept="audio/*" style="display: none;">
+                </div>
+                <button class="mix-toggle-btn" id="toggleBtn1" data-mix="1" disabled>
+                    🔊 Play Mix 1
+                </button>
+            </div>
+
+            <div class="mix-container">
+                <div class="drop-zone" id="dropZone2" data-mix="2">
+                    <div class="drop-zone-label">Mix 2</div>
+                    <div class="drop-zone-text">Drag & Drop or Click</div>
+                    <div class="file-name" id="fileName2"></div>
+                    <input type="file" id="fileInput2" accept="audio/*" style="display: none;">
+                </div>
+                <button class="mix-toggle-btn" id="toggleBtn2" data-mix="2" disabled>
+                    🔊 Play Mix 2
+                </button>
+            </div>
+
+            <div class="mix-container">
+                <div class="drop-zone" id="dropZone3" data-mix="3">
+                    <div class="drop-zone-label">Mix 3</div>
+                    <div class="drop-zone-text">Drag & Drop or Click</div>
+                    <div class="file-name" id="fileName3"></div>
+                    <input type="file" id="fileInput3" accept="audio/*" style="display: none;">
+                </div>
+                <button class="mix-toggle-btn" id="toggleBtn3" data-mix="3" disabled>
+                    🔊 Play Mix 3
+                </button>
+            </div>
+
+            <div class="mix-container">
+                <div class="drop-zone" id="dropZone4" data-mix="4">
+                    <div class="drop-zone-label">Mix 4</div>
+                    <div class="drop-zone-text">Drag & Drop or Click</div>
+                    <div class="file-name" id="fileName4"></div>
+                    <input type="file" id="fileInput4" accept="audio/*" style="display: none;">
+                </div>
+                <button class="mix-toggle-btn" id="toggleBtn4" data-mix="4" disabled>
+                    🔊 Play Mix 4
+                </button>
+            </div>
+        </div>
+
+        <div class="current-mix" id="currentMix">
+            No mix loaded
+        </div>
+
+        <div class="controls">
+            <div class="playback-controls">
+                <button class="play-btn" id="playBtn" disabled>▶ Play</button>
+                <button class="pause-btn" id="pauseBtn" disabled>⏸ Pause</button>
+                <button class="stop-btn" id="stopBtn" disabled>⏹ Stop</button>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+
+            <div class="volume-control">
+                <label>🔊 Volume:</label>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100">
+                <span class="volume-value" id="volumeValue">100%</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class AudioMixComparator4 {
+            constructor() {
+                this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                this.mixes = {
+                    1: { buffer: null, source: null, gainNode: null, fileName: '' },
+                    2: { buffer: null, source: null, gainNode: null, fileName: '' },
+                    3: { buffer: null, source: null, gainNode: null, fileName: '' },
+                    4: { buffer: null, source: null, gainNode: null, fileName: '' }
+                };
+                this.currentMix = null;
+                this.isPlaying = false;
+                this.startTime = 0;
+                this.pauseTime = 0;
+                this.duration = 0;
+                this.animationFrame = null;
+                this.masterVolume = 1;
+                
+                this.initializeElements();
+                this.setupEventListeners();
+                this.setupGainNodes();
+            }
+
+            initializeElements() {
+                this.elements = {};
+                for (let i = 1; i <= 4; i++) {
+                    this.elements[`dropZone${i}`] = document.getElementById(`dropZone${i}`);
+                    this.elements[`fileInput${i}`] = document.getElementById(`fileInput${i}`);
+                    this.elements[`fileName${i}`] = document.getElementById(`fileName${i}`);
+                    this.elements[`toggleBtn${i}`] = document.getElementById(`toggleBtn${i}`);
+                }
+                
+                this.currentMixDisplay = document.getElementById('currentMix');
+                this.playBtn = document.getElementById('playBtn');
+                this.pauseBtn = document.getElementById('pauseBtn');
+                this.stopBtn = document.getElementById('stopBtn');
+                this.progressBar = document.getElementById('progressBar');
+                this.progressFill = document.getElementById('progressFill');
+                this.currentTimeDisplay = document.getElementById('currentTime');
+                this.durationDisplay = document.getElementById('duration');
+                this.volumeSlider = document.getElementById('volumeSlider');
+                this.volumeValue = document.getElementById('volumeValue');
+            }
+
+            setupGainNodes() {
+                for (let i = 1; i <= 4; i++) {
+                    this.mixes[i].gainNode = this.audioContext.createGain();
+                    this.mixes[i].gainNode.connect(this.audioContext.destination);
+                    this.mixes[i].gainNode.gain.value = 0;
+                }
+            }
+
+            setupEventListeners() {
+                // Setup for each mix
+                for (let i = 1; i <= 4; i++) {
+                    this.setupDropZone(
+                        this.elements[`dropZone${i}`],
+                        this.elements[`fileInput${i}`],
+                        i
+                    );
+                    
+                    this.elements[`toggleBtn${i}`].addEventListener('click', () => {
+                        this.switchToMix(i);
+                    });
+                }
+                
+                // Playback controls
+                this.playBtn.addEventListener('click', () => this.play());
+                this.pauseBtn.addEventListener('click', () => this.pause());
+                this.stopBtn.addEventListener('click', () => this.stop());
+                
+                // Progress bar
+                this.progressBar.addEventListener('click', (e) => this.seek(e));
+                
+                // Volume control
+                this.volumeSlider.addEventListener('input', (e) => this.updateVolume(e.target.value));
+            }
+
+            setupDropZone(dropZone, fileInput, mix) {
+                // Click to select file
+                dropZone.addEventListener('click', () => fileInput.click());
+                
+                // File input change
+                fileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        this.loadAudioFile(e.target.files[0], mix);
+                    }
+                });
+                
+                // Drag and drop
+                dropZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('active');
+                });
+                
+                dropZone.addEventListener('dragleave', () => {
+                    dropZone.classList.remove('active');
+                });
+                
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('active');
+                    
+                    if (e.dataTransfer.files.length > 0) {
+                        this.loadAudioFile(e.dataTransfer.files[0], mix);
+                    }
+                });
+            }
+
+            async loadAudioFile(file, mix) {
+                if (!file.type.startsWith('audio/')) {
+                    alert('Please select an audio file');
+                    return;
+                }
+
+                const arrayBuffer = await file.arrayBuffer();
+                const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+                
+                const mixObj = this.mixes[mix];
+                const dropZone = this.elements[`dropZone${mix}`];
+                const fileNameDisplay = this.elements[`fileName${mix}`];
+                const toggleBtn = this.elements[`toggleBtn${mix}`];
+                
+                // Store current playback state
+                const wasPlaying = this.isPlaying;
+                const currentPlaybackTime = wasPlaying ? (this.audioContext.currentTime - this.startTime) : this.pauseTime;
+                
+                // Stop playback if currently playing this mix
+                if (wasPlaying && this.currentMix === mix) {
+                    this.pause();
+                }
+                
+                mixObj.buffer = audioBuffer;
+                mixObj.fileName = file.name;
+                
+                dropZone.classList.add('loaded');
+                fileNameDisplay.textContent = file.name;
+                toggleBtn.disabled = false;
+                
+                // Set duration from first loaded file
+                if (this.duration === 0) {
+                    this.duration = audioBuffer.duration;
+                    this.durationDisplay.textContent = this.formatTime(this.duration);
+                }
+                
+                this.updateUI();
+                
+                // Resume playback with new buffer if this was the playing mix
+                if (wasPlaying && this.currentMix === mix && this.hasAnyMixLoaded()) {
+                    this.pauseTime = Math.min(currentPlaybackTime, audioBuffer.duration);
+                    setTimeout(() => this.play(), 50);
+                }
+            }
+
+            hasAnyMixLoaded() {
+                return Object.values(this.mixes).some(mix => mix.buffer !== null);
+            }
+
+            switchToMix(mixNumber) {
+                if (!this.isPlaying) return;
+                if (!this.mixes[mixNumber].buffer) return;
+                
+                // Instant crossfade
+                const now = this.audioContext.currentTime;
+                const fadeTime = 0.01;
+                
+                // Cancel any scheduled changes and fade out all other mixes
+                for (let i = 1; i <= 4; i++) {
+                    if (this.mixes[i].gainNode) {
+                        this.mixes[i].gainNode.gain.cancelScheduledValues(now);
+                        this.mixes[i].gainNode.gain.setValueAtTime(this.mixes[i].gainNode.gain.value, now);
+                        
+                        if (i !== mixNumber) {
+                            this.mixes[i].gainNode.gain.linearRampToValueAtTime(0, now + fadeTime);
+                        }
+                    }
+                }
+                
+                // Fade in the selected mix
+                this.mixes[mixNumber].gainNode.gain.linearRampToValueAtTime(this.masterVolume, now + fadeTime);
+                
+                this.currentMix = mixNumber;
+                this.updateUI();
+            }
+
+            play() {
+                if (this.isPlaying) return;
+                
+                if (!this.hasAnyMixLoaded()) {
+                    alert('Please load at least one audio file');
+                    return;
+                }
+
+                // Select first loaded mix if none selected
+                if (this.currentMix === null) {
+                    for (let i = 1; i <= 4; i++) {
+                        if (this.mixes[i].buffer) {
+                            this.currentMix = i;
+                            break;
+                        }
+                    }
+                }
+
+                // Resume audio context if suspended
+                if (this.audioContext.state === 'suspended') {
+                    this.audioContext.resume();
+                }
+
+                // Create sources for all loaded mixes
+                const offset = this.pauseTime;
+                
+                for (let i = 1; i <= 4; i++) {
+                    if (this.mixes[i].buffer) {
+                        this.mixes[i].source = this.audioContext.createBufferSource();
+                        this.mixes[i].source.buffer = this.mixes[i].buffer;
+                        this.mixes[i].source.connect(this.mixes[i].gainNode);
+                        
+                        // Set gain: active mix at master volume, others silent
+                        if (i === this.currentMix) {
+                            this.mixes[i].gainNode.gain.value = this.masterVolume;
+                        } else {
+                            this.mixes[i].gainNode.gain.value = 0;
+                        }
+                        
+                        this.mixes[i].source.start(0, offset);
+                        
+                        // Handle end of first mix
+                        if (i === this.currentMix) {
+                            this.mixes[i].source.onended = () => {
+                                if (this.isPlaying) {
+                                    this.stop();
+                                }
+                            };
+                        }
+                    }
+                }
+                
+                this.startTime = this.audioContext.currentTime - offset;
+                this.isPlaying = true;
+                
+                this.updateUI();
+                this.startProgressUpdate();
+            }
+
+            pause() {
+                if (!this.isPlaying) return;
+                
+                this.pauseTime = this.audioContext.currentTime - this.startTime;
+                
+                for (let i = 1; i <= 4; i++) {
+                    if (this.mixes[i].source) {
+                        this.mixes[i].source.stop();
+                    }
+                }
+                
+                this.isPlaying = false;
+                this.stopProgressUpdate();
+                this.updateUI();
+            }
+
+            stop() {
+                for (let i = 1; i <= 4; i++) {
+                    if (this.mixes[i].source) {
+                        this.mixes[i].source.stop();
+                    }
+                }
+                
+                this.isPlaying = false;
+                this.pauseTime = 0;
+                this.progressFill.style.width = '0%';
+                this.currentTimeDisplay.textContent = '0:00';
+                
+                this.stopProgressUpdate();
+                this.updateUI();
+            }
+
+            seek(e) {
+                const rect = this.progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                const seekTime = percent * this.duration;
+                
+                const wasPlaying = this.isPlaying;
+                
+                if (this.isPlaying) {
+                    this.pause();
+                }
+                
+                this.pauseTime = seekTime;
+                this.progressFill.style.width = (percent * 100) + '%';
+                this.currentTimeDisplay.textContent = this.formatTime(seekTime);
+                
+                if (wasPlaying) {
+                    setTimeout(() => this.play(), 10);
+                }
+            }
+
+            updateVolume(value) {
+                this.masterVolume = value / 100;
+                
+                // Update the currently playing mix
+                if (this.currentMix !== null && this.isPlaying) {
+                    this.mixes[this.currentMix].gainNode.gain.value = this.masterVolume;
+                }
+                
+                this.volumeValue.textContent = value + '%';
+            }
+
+            startProgressUpdate() {
+                const updateProgress = () => {
+                    if (this.isPlaying) {
+                        const currentTime = this.audioContext.currentTime - this.startTime;
+                        const percent = (currentTime / this.duration) * 100;
+                        
+                        this.progressFill.style.width = Math.min(percent, 100) + '%';
+                        this.currentTimeDisplay.textContent = this.formatTime(currentTime);
+                        
+                        this.animationFrame = requestAnimationFrame(updateProgress);
+                    }
+                };
+                updateProgress();
+            }
+
+            stopProgressUpdate() {
+                if (this.animationFrame) {
+                    cancelAnimationFrame(this.animationFrame);
+                    this.animationFrame = null;
+                }
+            }
+
+            updateUI() {
+                const anyLoaded = this.hasAnyMixLoaded();
+                
+                this.playBtn.disabled = !anyLoaded || this.isPlaying;
+                this.pauseBtn.disabled = !this.isPlaying;
+                this.stopBtn.disabled = !this.isPlaying && this.pauseTime === 0;
+                
+                // Update toggle buttons
+                for (let i = 1; i <= 4; i++) {
+                    const toggleBtn = this.elements[`toggleBtn${i}`];
+                    const isLoaded = this.mixes[i].buffer !== null;
+                    
+                    toggleBtn.disabled = !isLoaded || !this.isPlaying;
+                    
+                    if (i === this.currentMix && this.isPlaying) {
+                        toggleBtn.classList.add('active');
+                    } else {
+                        toggleBtn.classList.remove('active');
+                    }
+                }
+                
+                // Update current mix display
+                if (this.currentMix !== null && this.mixes[this.currentMix].buffer) {
+                    const currentFileName = this.mixes[this.currentMix].fileName;
+                    this.currentMixDisplay.textContent = `Currently Playing: Mix ${this.currentMix} - ${currentFileName}`;
+                } else if (anyLoaded) {
+                    this.currentMixDisplay.textContent = 'Load files and press Play';
+                } else {
+                    this.currentMixDisplay.textContent = 'No mix loaded';
+                }
+            }
+
+            formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Initialize the application
+        const app = new AudioMixComparator4();
+    </script>
+</body>
+</html>

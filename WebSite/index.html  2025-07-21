@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FFCC66" />
+    <title>Venice Treacle</title>
+
+    <!-- cache busting -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+
+    <style>
+
+        @font-face {
+            font-family: 'Harlow Solid LET Plain:1.0';
+            font-style: normal;
+            font-weight: normal;
+            src: local('fonts/Harlow Solid LET Plain:1.0'), url('fonts/Harlow Solid LET Plain1.0.woff') format('woff');
+        }
+
+        html {
+            html{scroll-behavior: smooth !important;}
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+        }
+        .container {
+            max-width: 960px;
+            width: 100%;
+            padding: 0px;
+            /*box-sizing: border-box;*/
+            background-color: #CC99DD;
+
+        }
+        a {
+            color: #551A8B !important; /*#043B35*/
+        }
+        a:visited {
+            color: #551A8B !important;
+        }
+
+        img, video, iframe {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .vt-banner {
+            margin-bottom: 10px !important;
+        }
+        @media (max-width: 600px) {
+            .vt-banner {
+                margin-bottom: 5px !important;
+            }
+        }
+        audio {
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+        .auto-resizable-iframe {
+            max-width: 960px;
+            margin: 0px auto 20px auto;
+        }
+        .auto-resizable-iframe > div {
+            position: relative;
+            padding-bottom: 50%;
+            height: 0px;
+        }
+        .auto-resizable-iframe iframe {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-media img {
+            width: 80px;
+            height: 80px;
+            margin-bottom:0; /*remove when followed by image or vid*/
+        }
+        .social-white-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        @media (max-width: 600px) {
+            .social-media {
+                gap: 10px;
+            }
+            .social-media img {
+                width: 60px;
+                height: 60px;
+            }
+            .social-white-circle {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .harlow-subtitle {
+            font-family: 'Harlow Solid LET Plain:1.0';
+            font-size: 5em;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: black;
+            color: #CBEFFE;
+            text-align:center;
+            margin:0;
+        }
+        @media (max-width: 600px) {
+            .harlow-subtitle {
+                font-size: 4em;
+            }
+        }
+        @media (max-width: 400px) {
+            .harlow-subtitle {
+                font-size: 3em;
+            }
+        }
+
+        .coming-up-images.one-poster {
+			grid-template-columns: 1fr !important;
+			gap:0 !important;
+			margin: 0 100px;
+		}
+
+        .coming-up-images.two-posters {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            justify-items: center;
+            margin: 0 20px;
+        }
+
+        .coming-up-images img {
+            width: 100%;
+            height: auto;
+        }
+        @media (max-width: 600px) {
+            .coming-up-images {
+                grid-template-columns: 1fr !important;
+                gap:0 !important;
+                margin: 0;
+            }
+
+            .coming-up-images.one-poster {
+                margin: 0 20px;
+            }
+
+            .coming-up-images.two-posters {
+                display: block;
+            }
+        }
+        .vt-text {
+            text-align: center;
+            margin: 20px;
+            font-size: 1.5em;
+        }
+
+        .vt-text.email {
+            font-size: 2em !important;
+            margin:0 20px 30px 20px !important;
+        }
+        .vt-text.link {
+            font-size: 1.5em !important;
+            margin:0 20px 30px 20px !important;
+        }
+        @media (max-width: 600px) {
+            .vt-text {
+                margin: 20px;
+                font-size: 1em;
+            }
+            .vt-text.link {
+                font-size: 1.25em !important;
+            }
+        }
+        .vt-nav {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background-color: #CC99DD;
+            z-index: 1000;
+            text-align: center;
+            margin: 0 0 20px 0 ;
+            font-size: 1.5em;
+        }
+        @media (max-width: 600px) {
+            .vt-nav {
+                margin: 0 0 10px 0 ;
+                font-size: 1em;
+            }
+        }
+        .vt-nav-link {
+            text-align: center;
+            /*margin: 20px 0;*/
+            padding: 10px ;
+            display: inline-block;
+            /*text-decoration: none;*/
+            background-color: #CC99DD;
+        }
+        @media (max-width: 600px) {
+            .vt-nav-link {
+                padding: 10px 5px ;
+            }
+        }
+        .vt-nav-link:hover {
+            background-color: #b380cc;
+        }
+        .vt-nav-link:active {
+            background-color: #9966b3;
+
+        }
+        .vt-button-link {
+            text-align: center;
+            /*margin: 20px 0;*/
+            padding: 30px 0 20px 0;
+            display: block;
+            text-decoration: none;
+            background-color: #CC99DD;
+        }
+        .vt-button-link:hover {
+            background-color: #b380cc;
+        }
+        .vt-button-link:active {
+            background-color: #9966b3;
+        }
+        .vt-button-link.yellow {
+            background-color: #ffcc66;
+        }
+        .vt-button-link.yellow:hover {
+            background-color: #e6b84d;
+        }
+        .vt-button-link.yellow:active {
+            background-color: #cc9933;
+        }
+
+        .gig-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .gig-list li {
+            margin: 0 0 20px 0;
+        }
+
+        #install-button-container {
+            text-align:center;
+            margin-bottom:20px;
+            display:none;
+        }
+
+        #install-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 22px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #install-button:hover {
+            background-color: #45a049;
+        }
+
+        #install-button-container a {
+            font-size:16px;
+        }
+
+        .masonry-gallery {
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+
+        .masonry-gallery img {
+            width: 299px; /* Fixed column width */
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .masonry-gallery img {
+                width: 100%; /* Full width on small screens */
+                margin-bottom: 20px;
+            }
+
+            .masonry-gallery {
+                margin: 20px;
+            }
+        }
+
+
+    </style>
+
+    <script>
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI notify the user they can install the PWA
+            const installButton = document.getElementById('install-button');
+            installButton.hidden = false;
+
+            installButton.addEventListener('click', (e) => {
+                // hide our user interface that shows our A2HS button
+                installButton.hidden = true;
+                // Show the prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                    } else {
+                    console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+
+        window.onload = function() {
+
+            const pageContainer = document.getElementById('page-container');
+            const spaceAboveTarget = 50;
+
+            document.querySelectorAll('.vt-nav-link').forEach(link => {
+                link.addEventListener('click', function(event) {
+
+                    let scrollSpeed = 50;
+
+                    const href= this.getAttribute('href');
+                    if(href === '#') {
+                        return;
+                    }
+                    if(href.charAt(0) !== '#') {
+                        return;
+                    }
+                    event.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById('target-' + targetId);
+                    if (targetElement) {
+                        const scrollHeight = targetElement.offsetTop - spaceAboveTarget;
+                        let scrollPosition = pageContainer.scrollTop;
+                        //console.log(scrollPosition);
+                        const scrollInterval = setInterval(() => {
+                            scrollPosition += scrollSpeed;
+                            window.scrollTo({ top: scrollPosition, behavior: "smooth" });
+                            pageContainer.scrollTo(0, scrollPosition);
+                            //console.log(pageContainer.scrollTop);
+                            if (scrollPosition >= scrollHeight) {
+                                clearInterval(scrollInterval);
+                            }
+                            else {
+                                //approach the target slowly
+                                if (scrollPosition >= scrollHeight - 50){
+                                    scrollSpeed = 10;
+                                }
+                            }
+                        }, 10); // adjust the interval time here
+                    }
+                });
+            });
+
+            let installMode = false;
+            const urlParams = new URLSearchParams(window.location.search);
+            installMode = urlParams.has('install');
+
+            function isSafari() {
+                //console.log(navigator.userAgent);
+                //console.log(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+                return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            }
+
+            if(installMode && !isSafari()) {
+                //show the install button container
+                document.getElementById('install-button-container').style.display = 'block';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let player = videojs("mmi-stagnes");
+            player.ready(function () {
+                player.on("loadedmetadata", function () {
+                    player.currentTime(11.8);
+                });
+            });
+
+            const posterGrid = document.getElementById("poster-grid");
+            const pageContainer = document.getElementById("main-content");
+            const navLinks = document.querySelectorAll(".vt-nav-link");
+
+            // Show the gig grid and hide the rest of the content
+            function showPosterGrid() {
+                posterGrid.style.display = "block";
+                pageContainer.style.display = "none";
+            }
+
+            // Show the rest of the content and hide the gig grid
+            function showPageContent() {
+                posterGrid.style.display = "none";
+                pageContainer.style.display = "block";
+            }
+
+            // Add event listeners to menu items
+            navLinks.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    const href = this.getAttribute("href");
+                    showPageContent();
+                });
+            });
+
+            document.getElementById('previous-gigs').addEventListener('click', function (event) {
+                event.preventDefault();
+                showPosterGrid();
+                checkWidthAndToggleMasonry();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            const masonryContainer = document.querySelector('.masonry-gallery');
+            let msnry = null;
+
+            function enableMasonry() {
+
+                if (!msnry) {
+                    msnry = new Masonry(masonryContainer, {
+                        itemSelector: 'img',
+                        columnWidth: '.masonry-gallery img',
+                        gutter: 10,
+                        fitWidth: true,
+                        /*horizontalOrder: true*/
+                    });
+                }
+            }
+
+            function disableMasonry() {
+                if (msnry) {
+                    msnry.destroy();
+                    msnry = null;
+                }
+            }
+
+            function checkWidthAndToggleMasonry() {
+                if (window.innerWidth <= 600) {
+                    disableMasonry();
+                } else {
+                    enableMasonry();
+                }
+            }
+
+            // Wait for images to load first
+            imagesLoaded(masonryContainer, function () {
+                // do this on showGigGrid checkWidthAndToggleMasonry();
+                window.addEventListener('resize', checkWidthAndToggleMasonry);
+                window.addEventListener("orientationchange", checkWidthAndToggleMasonry);
+            });
+
+
+            /*
+            // Ensure Masonry recalculates layout after all images are loaded
+            const images = masonryGallery.querySelectorAll("img");
+            Promise.all(
+                Array.from(images).map((img) => {
+                    console.log(img.src);
+                    return new Promise((resolve) => {
+                        if (img.complete) {
+                            resolve();
+                        } else {
+                            img.onload = resolve;
+                            img.onerror = resolve;
+                        }
+                    });
+                })
+            ).then(() => {
+                masonry.layout();
+            });
+*/
+        });
+
+    </script>
+</head>
+<body>
+    <div class="container" id="page-container">
+        <img class="vt-banner" src="images/venice_treacle_banner.png" alt="Venice Treacle Band" title="Venice Treacle Band">
+        <div class='vt-nav' >
+            <a href="#" class="vt-nav-link">Home</a>
+            <a href="#releases" class="vt-nav-link">Releases</a>
+            <a href="#gigs" class="vt-nav-link">Gigs</a>
+            <a href="#quank" class="vt-nav-link">Quank</a>
+            <a href="#contact" class="vt-nav-link">Contact</a>
+            <a href="press_pack.pdf" class="vt-nav-link" target="_blank">Press</a>
+        </div>
+        <div id="main-content">
+            <div id="install-button-container">
+                <button id="install-button" hidden>Install the Venice Treacle app</button>
+                <div><a href="/">Continue without installing the app</a></div>
+            </div>
+            <div class="social-media">
+                <a href="https://venicetreacle.bandcamp.com/album/modern-elixir" target="_blank">
+                    <img src="media-icons/BC.svg" alt="Bandcamp" >
+                </a>
+                <a href="https://open.spotify.com/artist/3bWqCt417V9s9SryrvM1aq?si=hn5GudiSQLeKAWBJhC39Yw" target="_blank" style="position: relative; display: inline-block;">
+                    <div class="social-white-circle"></div>
+                    <img src="media-icons/spotify.png" alt="Spotify" style="position: relative;">
+                </a>
+                <a href="https://www.facebook.com/venicetreacle" target="_blank">
+                    <img src="media-icons/FB.svg" alt="Facebook ">
+                </a>
+                <a href="https://www.instagram.com/venicetreacle/" target="_blank">
+                    <img src="media-icons/Insta.svg" alt="Instgram">
+                </a>
+                <a href="https://www.youtube.com/@VeniceTreacle" target="_blank">
+                    <img src="media-icons/youtube_icon.webp" alt="YouTube" >
+                </a>
+            </div>
+            <!--
+            <div class="auto-resizable-iframe">
+                <div>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/6C5UgMRSNXc?si=R7yUDaBGOgZWSnWd&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            -->
+            <div class="vt-text">
+                <p>Make yourself well with our debut EP <a href="venice-treacle-modern-elixir-smart-links" target="_blank">Modern Elixir</a></p>
+            </div>
+            <video
+                id="tamzma-session"
+                poster=""
+                class="video-js vjs-fluid"
+                controls
+                width="560" height="315"
+                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/embed/6C5UgMRSNXc?si=R7yUDaBGOgZWSnWd&rel=0"}], "youtube": { "start": 1743 } }'
+            >
+            </video>
+            <div class="vt-text">
+                <p>Venice Treacle distorts the four-piece boy band with right-angled riffs over rapturous rhythms to make dance punk psychedelia for our confusing times.</p>
+            </div>
+            <h2 class="harlow-subtitle" style="margin-bottom:20px;" id="target-releases">
+                Releases
+            </h2>
+
+            <div class="coming-up-images one-poster">
+                <a href="venice-treacle-modern-elixir-smart-links" target="_blank">
+                    <img src="images/venice_treacle_modern_elixir.webp" alt="Modern Elixir EP">
+                </a>
+            </div>
+
+            <!--
+            <div style="display: flex; justify-content: center;">
+                <img src="quank.svg" alt="Quank Rock" title="Quank Rock" style="width: 213px;">
+            </div>
+            -->
+            <!-- temporarily withdrawn -->
+            <h2 class="harlow-subtitle" style="margin-bottom:20px;" id="target-gigs">
+                Coming up ...
+            </h2>
+            <!--
+            <div class="coming-up-images">
+                <a href="https://eventbrite.co.uk/e/scouting-session-tickets-1230082623239" target="_blank">
+                    <img src="images/venice-treacle-fleece-2025-03-30.jpg" alt="Venice Treacle live at the Fleece, Bristol">
+                </a>
+            </div>
+
+            <div class="coming-up-images two-posters">
+                <a href="https://www.tickettailor.com/events/surfersagainstsewage2/1642581" target="_blank">
+                    <img src="images/venice-treacle-sas-35th-anniversary-ball-2025-07-05.png" alt="Venice Treacle live at the Surfers Against Sewage 35th Anniversary Ball">
+                </a>
+                <div class="vt-text" style="margin:0 20px 20px 20px;">
+                    <h2 style="margin-top:0;"> and come to these fabulous upcoming events all featuring Venice Treacle ...</h2>
+                    <ul class="gig-list">
+                        <li><strong>5 July 2025</strong> Surfers Against Sewage 35th Anniversary Ball</li>
+                        <li><strong>12 July 2025</strong> Exmouth Festival</li>
+                        <li><strong>19 July 2025</strong> Clangfest, Bristol</li>
+                        <li><strong>25-27 July 2025</strong> Cornish Bank Summer Camp</li>
+                        <li><strong>8 August 2025</strong> Boardmasters</li>
+                    </ul>
+                </div>
+            </div>
+
+            -->
+
+            <div class="coming-up-images two-posters">
+				<a href="https://www.exmouthfestival.co.uk/schedule/" target="_blank">
+					<img src="images/venice-treacle-exmouth-festival-2025-07-12.jpg" alt="Venice Treacle live at the Exmouth Festival 2025" title="Venice Treacle live at the Exmouth Festival 2025">
+				</a>
+                <a href="https://thecornishbank.co.uk/festivals/summer-camp/" target="_blank">
+					<img src="images/venice-treacle-summer-camp-2025-07-25.jpg" alt="Venice Treacle live at the Cornish Bank Summer Camp 2025" title="Venice Treacle live at the Cornish Bank Summer Camp 2025">
+				</a>
+			</div>
+
+
+            <div class="vt-text">
+				<h2 style="margin-top:0;"> and come to these fabulous upcoming events all featuring Venice Treacle ...</h2>
+				<ul class="gig-list">
+					<li><strong>8 August 2025</strong> Boardmasters</li>
+                    <li><strong>September 2025</strong> A Tour Of Sussex</li>
+				</ul>
+            </div>
+
+            <div class="vt-text link">
+                <a href="#previous-gigs" id="previous-gigs">Check out some of the gigs we have already played </a>
+            </div>
+
+            <h2 class="harlow-subtitle" id="target-quank">
+                Quank
+            </h2>
+            <div style="display: flex; justify-content: center;">
+                <audio title="Medley" controls="controls">
+                    <source src="VeniceTreacleMedley.mp3" type="audio/mp3">
+                </audio>
+            </div>
+            <div style="margin-bottom:20px;">
+                <video id="mmi-stagnes" class="video-js vjs-fluid" controls preload="metadata" data-setup="{}" >
+                    <source src="/videos/venice-treacle-st-agnes-mmi-20240427.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h2 class="harlow-subtitle" id="target-contact">
+                Contact
+            </h2>
+            <div class="vt-text email" >
+                <a href="mailto:mplasmid@hotmail.com">mplasmid@hotmail.com</a>
+            </div>
+            <a href="/venice-treacle-the-game" target="_self" class="vt-button-link yellow" >
+                <h2 class="harlow-subtitle" >
+                    Play the Game
+                </h2>
+            </a>
+            <a href="/venice-treacle-hq" target="_self" class="vt-button-link" style="margin-bottom:30px;">
+                <h2 class="harlow-subtitle" style="margin-bottom:500px;">
+                    Visit the Shop
+                </h2>
+            </a>
+            </div> <!-- end of main content -->
+            <div id="poster-grid" style="display: none;">
+                <h2 class="harlow-subtitle" id="target-quank">
+                    Earlier Gigs
+                </h2>
+                <div class="masonry-gallery">
+                    <a href="images/venice-treacle-sas-35th-anniversary-ball-2025-07-05.png" data-lightbox="gig-gallery">
+					    <img src="images/venice-treacle-sas-35th-anniversary-ball-2025-07-05.png" alt="Venice Treacle live at the Surfers Against Sewage 35th Anniversary Ball" title="="Venice Treacle live at the Surfers Against Sewage 35th Anniversary Ball"">
+				    </a>
+					<a href="images/venice-treacle-balfest-20250517.png" data-lightbox="gig-gallery">
+						<img src="images/venice-treacle-balfest-20250517.png" alt="Venice Treacle live at Balfest, St Agnes" title="Venice Treacle live at Balfest, St Agnes">
+                	</a>
+                    <a href="images/venice-treacle-thunderbolt-2025-04-03.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-thunderbolt-2025-04-03.jpg" alt="Venice Treacle @ The Thunderbolt, Bristol 2025-04-03" title="Venice Treacle @ The Thunderbolt, Bristol 2025-04-03">
+                    </a>
+                    <a href="images/venice-treacle-fleece-2025-03-30.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-fleece-2025-03-30.jpg" alt="Venice Treacle @ The Fleece, Bristol 2025-03-30" title="Venice Treacle @ The Fleece, Bristol 2025-03-30">
+                    </a>
+                    <a href="images/venice-treacle-glastonbury-calling-2025-03-01.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-glastonbury-calling-2025-03-01.jpg" alt="Venice Treacle @ Glastonbury Calling 2025-03-01" title="Venice Treacle @ Glastonbury Calling 2025-03-01">
+                    </a>
+                    <a href="images/venice-treacle-cavern-2025-02-15.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-cavern-2025-02-15.jpg" alt="Venice Treacle @ The Cavern, Exeter 2025-02-15" title="Venice Treacle @ The Cavern, Exeter 2025-02-15">
+                    </a>
+                    <a href="images/venice-treacle-assembly-rooms-2025-02-09.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-assembly-rooms-2025-02-09.jpg" alt="Venice Treacle @ The Assembly Rooms, Glastonbury 2025-02-09" title="Venice Treacle @ The Assembly Rooms, Glastonbury 2025-02-09">
+                    </a>
+                    <a href="images/venice-treacle-phoenix-2025-01-24.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-phoenix-2025-01-24.jpg" alt="Venice Treacle @ The Phoenix, Exeter 2025-01-24" title="Venice Treacle @ The Phoenix, Exeter 2025-01-24">
+                    </a>
+                    <a href="images/venice_treacle_MMI_2024-12-21.webp" data-lightbox="gig-gallery">
+                        <img src="images/venice_treacle_MMI_2024-12-21.webp" alt="Venice Treacle @ The MMI, St Agnes 2024-12-21" title="Venice Treacle @ The MMI, St Agnes 2024-12-21">
+                    </a>
+                    <a href="images/venice_treacle_rossi_bar_brighton_20241025.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice_treacle_rossi_bar_brighton_20241025.jpg" alt="Venice Treacle @ Rossi Bar, Brighton 2024-10-25" title="Venice Treacle @ Rossi Bar, Brighton 2024-10-25">
+                    </a>
+                    <a href="images/venice_treacle_valley_fest_20240803.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice_treacle_valley_fest_20240803.jpg" title="Venice Treacle @ Valley Fest, Somerset 2024-08-03" alt="Venice Treacle @ Valley Fest, Somerset 2024-08-03">
+                    </a>
+                    <a href="images/venice_treacle_exchange_2024-05-23.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice_treacle_exchange_2024-05-23.jpg" alt="Venice Treacle @ The Exchange, Bristol 2024-05-23" title="Venice Treacle @ The Exchange, Bristol 2024-05-23">
+                    </a>
+                    <a href="images/venice-treacle-cornish-bank-2024-04-28.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-cornish-bank-2024-04-28.jpg" alt="Venice Treacle @ The Cornish Bank, Falmouth 2024-04-28" title="Venice Treacle @ The Cornish Bank, Falmouth 2024-04-28">
+                    </a>
+                    <a href="images/venice-treacle-mmi-2024-04-27.png" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-mmi-2024-04-27.png" alt="Venice Treacle at the MMI, St Agnes 2024-04-27" title="Venice Treacle at the MMI, St Agnes 2024-04-27">
+                    </a>
+                    <a href="images/venice-treacle-lamb-2023-11-11.png" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-lamb-2023-11-11.png" alt="Venice Treacle @ The Lamb, Crediton 2023-11-11" title="Venice Treacle @ The Lamb, Crediton 2023-11-11">
+                    </a>
+                    <a href="images/venice-treacle-exchange-2023-11-02.png" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-exchange-2023-11-02.png" alt="Venice Treacle @ The Exchange, Bristol 2023-11-02" title="Venice Treacle @ The Exchange, Bristol 2023-11-02">
+                    </a>
+                    <a href="images/venice-treacle-fish-factory-2023-09-30.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-fish-factory-2023-09-30.jpg" alt="Venice Treacle @ The Fish Factory, Penryn 2023-09-30" title="Venice Treacle @ The Fish Factory, Penryn 2023-09-30">
+                    </a>
+                    <a href="images/venice-treacle-cornish-tour-2023-08-26.png" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-cornish-tour-2023-08-26.png" alt="Venice Treacle on a tour of Cornwall 2023-08-26" title="Venice Treacle on a tour of Cornwall 2023-08-26">
+                    </a>
+
+                </div>
+            </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/js/lightbox-plus-jquery.min.js" integrity="sha512-/IJVg2oav2TggiFftaMSPgttHNmgu/0RSGP64Nm7wqYwjkxj4hAHLRMJi3QNTa22f4pIkvTsCpB848HEilV6MA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-youtube@3.0.1/dist/Youtube.min.js"></script>
+</body>
+</html>

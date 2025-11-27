@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Div Example</title>
+    <style>
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .sticky-div {
+            position: -webkit-sticky; /* For Safari */
+            position: sticky;
+            top: 0;
+            background-color: #CC99DD;
+            z-index: 1000;
+            padding: 10px;
+        }
+        .content {
+            height: 2000px; /* Example height to enable scrolling */
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <img class="vt-banner" src="images/venice_treacle_banner.png" alt="Venice Treacle Band" title="Venice Treacle Band">
+
+        <div class="sticky-div">
+            <a href="#" class="vt-nav-link">Home</a>
+            <a href="#releases" class="vt-nav-link">Releases</a>
+            <a href="#gigs" class="vt-nav-link">Gigs</a>
+            <a href="#quank" class="vt-nav-link">Quank</a>
+            <a href="press_pack.pdf" class="vt-nav-link">About</a>
+            <a href="#contact" class="vt-nav-link">Contact</a>
+        </div>
+        <div class="content">
+            <!-- Your content here -->
+            <p>Scroll down to see the sticky behavior.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="utf-8">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#FFCC66" />
+<title>Venice Treacle The Band</title>
+
+<!-- cache busting -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/favicons/site.webmanifest">
+
+<style>
+body {
+    background-color: white; /* Corrected color code */
+    margin: 0;
+    padding: 0;
+}
+
+body, td, th {
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+img {width:100%;
+	}
+
+h3 {font-size: medium;
+}
+
+.youtube {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+margin: 0 auto; 
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+height:100%
+    }
+
+
+.myDivBg {
+    background-color: #CC99DD;
+	text-align: center;
+    font-size: large;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+.myDivBan {
+    background-color: #CC99DD;
+	text-align: center;
+    font-size: large;
+    
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+
+.myDivBgH {
+    background-color: #ffcc66;
+	text-align: center;
+    font-size: large;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+
+.myDivBgP {
+
+    text-align: center;
+    font-size: large;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+	background-color: #ffcc66;
+}
+
+	.myDivBghq {
+    text-align: center;
+    font-size: large;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+	background-color:#CC99DD;
+}
+
+.myDivBgP:hover {
+	background-color: #ffeecc;
+	}
+
+
+.flex-container {
+    background-color: #CC99DD;
+	display: flex;
+    justify-content: center;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.horizontal-divs > div {
+       background-color: #CC99DD;
+	display: inline-block;
+       width: 80px; /* Adjust width as needed */
+	}
+
+.horizontal-divs2 > div {
+       background-color: #C4C4C4;
+	   display: inline-block;
+       width: 250px; /* Adjust width as needed */
+	}
+
+
+/* Media query for screens wider than 500px */
+@media screen and (min-width: 501px) {
+   
+  .myDivBan  {
+        width: 100%; /* Adjust the width for larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+
+.youtube  {
+        width: 100%; /* Adjust the width for larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+ .myDivBgH  {
+        width: 100%; /* Adjust the width for larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+.myDivBg img {
+        width: 80%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+.myDivBg {
+        width: 100%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+.myDivBgP {
+        width: 100%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+.myDivBghq {
+        width: 100%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+.myDivBgP:hover {
+        width: 100%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+ .myDivBghq:hover {
+        width: 100%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+    }
+
+.flex-container {
+		width: 80%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+	}
+
+h3 {font-size: x-large;
+}
+
+}
+
+/* Media query for screens up to 500px */
+@media screen and (max-width: 500px) {
+    
+.video
+	{
+        height: 100%; /* Occupies full width on smaller screens */
+    }
+
+
+.myDivBan
+	{
+        width: 100%; /* Occupies full width on smaller screens */
+    }
+
+
+.youtube
+	{
+        width: 100%; /* Occupies full width on smaller screens */
+    }
+  
+
+ .myDivBg
+	{
+        width: 100%; /* Occupies full width on smaller screens */
+    }
+
+	.myDivBgH
+	{
+        width: 100%; /* Occupies full width on smaller screens */
+    }
+
+	.flex-container
+	{
+        width: 100%; /* Occupies full width on smaller screens */
+    }
+
+
+	 .myDivBgP {
+        width: 100%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+		background-color:#ffcc66;
+    }
+	 .myDivBghq {
+        width: 100%; /* Set the small heads image to 80% width on larger screens */
+        max-width: 960px; /* Limit the maximum width for larger screens */
+		background-color:#CC99DD;
+    }
+}
+
+
+/* POSTERS - Nick 2024-03-11 */
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /*margin: 0 -10px; /* Adjust as needed for margin between images */
+}
+
+.image-container a {
+    flex: 0 0 calc(50% - 20px); /* 50% width with margin accounted for */
+    margin: 10px; /* Adjust as needed for margin between images */
+}
+
+.image-container a.left-image {
+    text-align:right;
+}
+
+.image-container a.right-image {
+    text-align:left;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media query for portrait mode on phones */
+@media screen and (max-width: 500px) {
+    .image-container {
+        flex-direction: column; /* Stack images vertically */
+    }
+
+    .image-container a {
+        flex: 0 0 auto; /* Reset flex property to default for stacking */
+        margin: 0 0 10px 0; /* Margin between stacked images */
+        width: 100%; /* Make each image take full width */
+    }
+}
+
+/* END POSTERS */
+
+a {
+    font-weight: bold;
+    color: #000000;
+}
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    color: #C694D6;
+}
+a:active {
+    text-decoration: none;
+}
+
+#install-button-container {
+  display:none;
+  padding: 20px 20px 30px 20px;
+}
+
+#install-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 22px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#install-button:hover {
+  background-color: #45a049;
+}
+
+#install-button-container a {
+	font-size:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/sw.js');
+		});
+	}
+
+	let deferredPrompt;
+
+	window.addEventListener('beforeinstallprompt', (e) => {
+	  // Prevent the mini-infobar from appearing on mobile
+	  e.preventDefault();
+	  // Stash the event so it can be triggered later.
+	  deferredPrompt = e;
+	  // Update UI notify the user they can install the PWA
+	  const installButton = document.getElementById('install-button');
+	  installButton.hidden = false;
+
+	  installButton.addEventListener('click', (e) => {
+		// hide our user interface that shows our A2HS button
+		installButton.hidden = true;
+		// Show the prompt
+		deferredPrompt.prompt();
+		// Wait for the user to respond to the prompt
+		deferredPrompt.userChoice.then((choiceResult) => {
+			if (choiceResult.outcome === 'accepted') {
+			  console.log('User accepted the A2HS prompt');
+			} else {
+			  console.log('User dismissed the A2HS prompt');
+			}
+			deferredPrompt = null;
+		});
+	  });
+	});
+
+	window.onload = function() {
+
+		let installMode = false;
+		const urlParams = new URLSearchParams(window.location.search);
+		installMode = urlParams.has('install');
+
+		function isSafari() {
+			//console.log(navigator.userAgent);
+			//console.log(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+			return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+		}
+
+		if(installMode && !isSafari()) {
+			//show the install button container
+			document.getElementById('install-button-container').style.display = 'block';
+		}
+	}
+
+</script>
+
+
+<div class="myDivBan">
+
+        <img src="images/venice_treacle_banner.png" alt="Venice Treacle Band" title="Venice Treacle Band">
+
+</div>
+
+<div id="install-button-container" class="myDivBg">
+    <button id="install-button" hidden>Install the Venice Treacle app</button>
+    <div><a href="/">Continue without installing the app</a></div>
+</div>
+
+<!-- Container for social media icons and links -->
+<div class="flex-container">
+	<div class="horizontal-divs">
+   <div> <a href="https://venicetreacle.bandcamp.com/track/vt-medley" target="_blank">
+    <img src="BC.svg" alt="" width="80" height="80"></a></div>
+
+	<div><a href="https://www.facebook.com/venicetreacle" target="_blank">
+    <img src="FB.svg" alt="" width="80" height="80"></a></div>
+
+	<div><a href="https://www.instagram.com/venicetreacle/" target="_blank">
+        <img src="Insta.svg" alt="" width="80" height="80"></a></div>
+
+	<div><a href="https://www.youtube.com/channel/UCeu6NytXoTmro6mzRVu9jqQ" target="_blank">
+        <img src="images/youtube_icon.webp" alt="" width="80" height="80"></a></div>
+
+</div>
+	</div>
+
+<div class="youtube">
+	<iframe  src="https://www.youtube.com/embed/6C5UgMRSNXc?si=R7yUDaBGOgZWSnWd&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="video" ></iframe>
+</div>
+
+
+<div class="myDivBg">
+	Venice Treacle bring you No Wave Quank from Bristol, Exeter, and St Agnes.<p></p>
+    Musical serum concocted from members of Penelope Quiche, Attack Horse, Pons Buffalo, and Jizz Circus.
+</div>
+
+<div class="myDivBg"></div>
+
+<div class="myDivBg">
+    <img src="quank.svg" width="213" height="81"  alt="Quank Rock" title="Quank Rock">
+</div>
+
+<div class="myDivBg">
+  <audio title="Medley" controls="controls" >
+    <source src="VeniceTreacleMedley.mp3" type="audio/mp3">
+  </audio>
+</div>
+
+
+<div class="myDivBg">
+    <h2> Coming up...</h3>
+<!--<img src="showfests.svg" width="310" height="96" alt="Venice Treacle Upcoming Gigs" title="Venice Treacle Upcoming Gigs">
+</div>-->
+
+<!--
+<div class="myDivBg image-container">
+    <a class="left-image" href="https://www.ticketsource.co.uk/whats-on/saint-agnes/st-agnes-miners-and-mechanics-institute/mmi-music-presents-venice-treacle-danger-of-death-and-the-rodians/2024-04-27/20:00/t-ojaxegm" target="_blank">
+    	<img src="VT_MMI_square 540.png" alt="Venice Treacle live at the St Agnes Miners and Mechanics Institute" >
+	</a>
+    <a class="right-image" href="https://thecornishbank.co.uk/TheCornishBank.dll/WhatsOn?f=151611&fbclid=IwAR3s1z-UdRD55y-ZKQnO2Cy5E9vL_LTJQ_msmzU4INjZ7Sx7NiY6OfFRQ4U" target="_blank">
+    	<img src="CBposter.jpg" alt="Venice Treacle live at the Cornish Bank">
+    </a>
+</div>
+-->
+
+<div class="myDivBg image-container">
+    <a class="left-image" href="https://www.ticketsource.co.uk/whats-on/saint-agnes/st-agnes-miners-and-mechanics-institute/mmi-music-presents-choir-of-the-sun-venice-treacle-and-the-badlands-blues-band/e-lqmroo" target="_blank">
+    	<img src="images/venice_treacle_MMI_20241221.webp" alt="Venice Treacle live at the MMI" >
+	</a>
+<a class="right-image"> <img src="images/venice_treacle_modern_elixir.webp" alt="Modern Elixir EP"></a>
+
+</div>
+
+
+<div class="myDivBg" style="padding: 20px 50px;">
+  <video controls style="width:100%;" >
+    <source src="videos/venice-treacle-st-agnes-mmi-20240427.mp4#t=11.8" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<div class="myDivBg">
+    <img src="contact.svg" width="245" height="81" alt="Contact Venice Treacle" title="Contact Venice Treacle">
+</div>
+
+<div class="myDivBg">
+    mplasmid@hotmail.com
+</div>
+
+<div class="myDivBg">
+    <p></p>
+</div>
+
+<div class="myDivBgP">
+   <a href="/venice-treacle-the-game" target="_self"> <img src="playthegame.svg" width="477" height="98" alt="Play The Venice Treacle Game" title="Play The Venice Treacle Game">
+		</a>
+
+	</div>
+
+	<div class="myDivBghq">
+   <a href="/venice-treacle-hq" target="_self"> <img src="visit.svg" width="477" height="81" alt="Visit Venice Treacle HQ" title="Visit Venice Treacle">
+		</a>
+
+	</div>
+	<div class="myDivBg">
+    <p></p>
+</div>
+<div class="myDivBg">
+    <p></p>
+</div>
+
+</body>
+</html>
