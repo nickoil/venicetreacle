@@ -30,6 +30,8 @@ services:
     build:
       context: ./docker/php
       dockerfile: Dockerfile
+    # ports:
+    #  - "5173:5173"      
     volumes:
       - .:/var/www/venicetreacle/venicetreacle_app
       # Nick: to make the app run quickly, override the vendor folder with a named volume, so that it lives in the container
@@ -37,12 +39,15 @@ services:
       - laravel-node_modules:/var/www/venicetreacle/venicetreacle_app/node_modules
       - laravel-public-build:/var/www/venicetreacle/venicetreacle_app/public/build
       - ./docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini
+    working_dir: /var/www/venicetreacle/venicetreacle_app
     networks:
       - appnet
 
   mariadb:
     image: mariadb:10.6
     restart: always
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: yourrootpassword
       MYSQL_DATABASE: appdb
