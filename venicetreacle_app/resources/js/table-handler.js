@@ -39,10 +39,10 @@ const tableHandlerInit = () => {
         if(clearFilter) {
             if(filterOn) {
                 clearFilter.classList.remove('bg-white');
-                clearFilter.classList.add('bg-red-200');
+                clearFilter.classList.add('bg-lime-500');
             }
             else {
-                clearFilter.classList.remove('bg-red-200');
+                clearFilter.classList.remove('bg-lime-500');
                 clearFilter.classList.add('bg-white');
             }
         }

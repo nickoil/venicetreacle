@@ -21,64 +21,88 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
-                        <x-dropdown align="left" width="w-32" menuName="adminMenu"  >
-                            <x-slot name="trigger">
-                                <x-nav-link :active="request()->routeIs('users.index')" >
-                                    <div >{{__('Admin')}}</div>
-                                    <x-nav-down-arrow />
-                                </x-nav-link>
+                    <x-dropdown align="left" width="w-32" menuName="adminMenu"  >
+                        <x-slot name="trigger">
+                            <x-nav-link :active="request()->routeIs('users.index')"  class="cursor-pointer">
+                                <div >{{__('Admin')}}</div>
+                                <x-nav-down-arrow />
+                            </x-nav-link>
 
-                            </x-slot>
+                        </x-slot>
 
-                            <x-slot name="content">
-                                <x-dropdown-link :href="route('users.index')" :active="request()->routeIs('users.index')" @click="adminMenu = ! adminMenu">
-                                    {{ __('Users') }}
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('users.index')" :active="request()->routeIs('users.index')" @click="adminMenu = ! adminMenu">
+                                {{ __('Users') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('user-logs.index')"  :active="request()->routeIs('user-logs.index')" @click="adminMenu = ! adminMenu">
+                                {{ __('User Log') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('emails.index')" :active="request()->routeIs('emails.index')" @click="adminMenu = ! adminMenu">
+                                    {{ __('Email Log') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('blacklist.index')" :active="request()->routeIs('blacklist.index')" @click="adminMenu = ! adminMenu">
+                                {{ __('Email Blacklist') }}
+                            </x-dropdown-link>
+
+                            {{-- This is an example of a second tier menu, useful for the future 
+                            <x-dropdown-link x-on:click="logMenu = ! logMenu" @click.away="logMenu = false" class="inline-flex items-center justify-between">
+                                {{ __('Logs') }}
+                                <div class="ms-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </x-dropdown-link>
+
+                            <div class="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white w-40 absolute left-32 top-[4.5rem] "
+                                x-show="logMenu" x-transition:enter="transition ease-out duration-100"
+                                x-transition:enter-start="transform opacity-0 scale-95">
+                                <x-dropdown-link :href="route('emails.index')" @click="adminMenu = ! adminMenu">
+                                    {{ __('Email Log') }}
                                 </x-dropdown-link>
-
-                                <x-dropdown-link :href="route('user-logs.index')"  :active="request()->routeIs('user-logs.index')" @click="adminMenu = ! adminMenu">
-                                    {{ __('User Log') }}
-                                </x-dropdown-link>
-
-                                <x-dropdown-link :href="route('emails.index')" :active="request()->routeIs('emails.index')" @click="adminMenu = ! adminMenu">
-                                        {{ __('Email Log') }}
-                                </x-dropdown-link>
-
-                                <x-dropdown-link :href="route('blacklist.index')" :active="request()->routeIs('blacklist.index')" @click="adminMenu = ! adminMenu">
+                                <x-dropdown-link :href="route('blacklist.index')" @click="adminMenu = ! adminMenu">
                                     {{ __('Email Blacklist') }}
                                 </x-dropdown-link>
-
-                                {{-- This is an example of a second tier menu, useful for the future 
-                                <x-dropdown-link x-on:click="logMenu = ! logMenu" @click.away="logMenu = false" class="inline-flex items-center justify-between">
-                                    {{ __('Logs') }}
-                                    <div class="ms-1">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
+                                <x-dropdown-link :href="route('user-logs.index')" @click="adminMenu = ! adminMenu">
+                                    {{ __('User Log') }}
                                 </x-dropdown-link>
+                                <x-dropdown-link>
+                                    {{ __('App Log') }}
+                                </x-dropdown-link>
+                            </div>
+                            --}}
 
-                                <div class="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white w-40 absolute left-32 top-[4.5rem] "
-                                    x-show="logMenu" x-transition:enter="transition ease-out duration-100"
-                                    x-transition:enter-start="transform opacity-0 scale-95">
-                                    <x-dropdown-link :href="route('emails.index')" @click="adminMenu = ! adminMenu">
-                                        {{ __('Email Log') }}
-                                    </x-dropdown-link>
-                                    <x-dropdown-link :href="route('blacklist.index')" @click="adminMenu = ! adminMenu">
-                                        {{ __('Email Blacklist') }}
-                                    </x-dropdown-link>
-                                    <x-dropdown-link :href="route('user-logs.index')" @click="adminMenu = ! adminMenu">
-                                        {{ __('User Log') }}
-                                    </x-dropdown-link>
-                                    <x-dropdown-link>
-                                        {{ __('App Log') }}
-                                    </x-dropdown-link>
-                                </div>
-                                --}}
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+@endif
 
-                            </x-slot>
-                        </x-dropdown>
-                    </div>
-                    @endif
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-dropdown align="left" width="w-40" menuName="streamersMenu"  >
+                        <x-slot name="trigger">
+                            <x-nav-link class="cursor-pointer">
+                                <div>{{__('Streamers')}}</div>
+                                <x-nav-down-arrow />
+                            </x-nav-link>
+
+                        </x-slot>
+
+                        <x-slot name="content">
+
+                            <x-dropdown-link :href="route('presaves.index')" :active="request()->routeIs('presaves.index')" @click="translationsMenu = ! translationsMenu">
+                                {{ __('Pre-Saves') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('callback-logs.index')" :active="request()->routeIs('callback-logs.index')" @click="translationsMenu = ! translationsMenu">
+                                {{ __('Callback Log') }}
+                            </x-dropdown-link>
+
+                        </x-slot>
+                    </x-dropdown>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -150,7 +174,14 @@
             <x-responsive-nav-link :href="route('blacklist.index')" :active="request()->routeIs('blacklist.index')">
                 {{ __('Email Blacklist') }}
             </x-responsive-nav-link>
-@endif            
+@endif        
+
+            <x-responsive-nav-link :href="route('callback-logs.index')" :active="request()->routeIs('callback-logs.index')">
+                {{ __('Callback Log') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('presaves.index')" :active="request()->routeIs('presaves.index')">
+                {{ __('Pre-Saves') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

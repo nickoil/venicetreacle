@@ -51,9 +51,11 @@
                         </x-form-box>
 
                         <x-form-box :name="'subject'" :label="__('Content')" >
-                            <iframe class="shadow appearance-none border-black rounded w-full text-gray-700 
-                                leading-tight pointer-events-none" srcdoc="{{ $email->body }}"
-                                onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));" ></iframe>
+                            <div class="h-64 overflow-y-auto mb-4 border border-gray-500 rounded">
+                                <iframe class="shadow appearance-none border-black rounded w-full text-gray-700 
+                                    leading-tight pointer-events-none" srcdoc="{{ $email->body }}"
+                                    onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+'px';}(this));" ></iframe>
+                            </div>
                         </x-form-box>
 
                         <x-form-box :name="'sent_time'" :label="__('Sent At')" >

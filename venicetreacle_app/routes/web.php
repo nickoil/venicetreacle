@@ -63,5 +63,15 @@ Route::prefix('user-logs')->middleware(['auth', 'verified', 'checkRole:Administr
     Route::get('/export', [UserLogController::class, 'export'])->name('user-logs.export');
 });
 
+Route::prefix('callback-logs')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\CallbackLogController::class, 'index'])->name('callback-logs.index');
+    Route::get('/export', [\App\Http\Controllers\CallbackLogController::class, 'export'])->name('callback-logs.export');
+});
+
+Route::prefix('presaves')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\PresaveController::class, 'index'])->name('presaves.index');
+    Route::get('/export', [\App\Http\Controllers\PresaveController::class, 'export'])->name('presaves.export');
+});
+
 
 require __DIR__.'/auth.php';

@@ -237,11 +237,13 @@ function getAudioPreview() // gets audio preview from apple's servers
 {
     //debug('hyperAlbum:');
     //debug(treacleAlbum);
+    /* why not show it?
     if (treacleAlbum.minutesUntilLiveInMyLocation > 0) {
         $j('.waveformContainer').hide(); // let's not show audio before release date
         return false 
     }
-    /* Nick - not possible
+    */
+    /*Nick - not possible */
     if (typeof previewData != 'undefined') // if we've already loaded preview data server-side, ignore all this. 
     {
         debug('previewData exists');
@@ -252,7 +254,8 @@ function getAudioPreview() // gets audio preview from apple's servers
     else {
         debug('previewData does not exist');    
     }
-    */
+    /**/
+    /*
     previewData = {} // global variable 
     previewData.tracks = [];
     previewData.id = treacleAlbum.hyperfollowAlbumId;
@@ -298,7 +301,7 @@ function getAudioPreview() // gets audio preview from apple's servers
                     }
                 })
             }
-            */
+            * /
 
             // end: save pcm 
             createWavesurfer();
@@ -306,6 +309,8 @@ function getAudioPreview() // gets audio preview from apple's servers
         }
 
     },'jsonp')
+
+    */
 }
 
 function fixPlaceHolder() {

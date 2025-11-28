@@ -16,14 +16,14 @@ export default defineConfig({
     ],
     server: {
         https: {
-            key: fs.readFileSync('docker/certs/quankhq.venicetreacle.dv.key'),
-            cert: fs.readFileSync('docker/certs/quankhq.venicetreacle.dv.crt'),
+            key: fs.readFileSync('docker/certs/hq.venicetreacle.dv.key'),
+            cert: fs.readFileSync('docker/certs/hq.venicetreacle.dv.crt'),
         },
         host: '0.0.0.0',
         port: 5173,
         strictPort: true,
         hmr: {
-            host: 'quankhq.venicetreacle.dv',
+            host: 'hq.venicetreacle.dv',
             protocol: 'wss',
         },
         watch: {

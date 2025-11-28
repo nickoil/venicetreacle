@@ -67,6 +67,8 @@ function exportCSV($filename, $fields, $query) {
                 //
                 // currently goes three chains deep, but of course we can go deeper if needed
 
+                //dd($fieldName);
+
                 $fieldNameChain = explode('->', $fieldName);
                 switch(sizeof($fieldNameChain)) {
                     case 1:
@@ -91,7 +93,7 @@ function exportCSV($filename, $fields, $query) {
                         }
                         break;
                 }
-
+                //dd($row);
             }
             fputcsv($fh, $row);
         }
