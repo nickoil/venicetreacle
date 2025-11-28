@@ -183,6 +183,12 @@
             font-size: 1.5em;
         }
 
+        .vt-text-large {
+            text-align: center;
+            margin: 20px;
+            font-size: 2em;
+        }
+
         .vt-text.email {
             font-size: 2em !important;
             margin:0 20px 30px 20px !important;
@@ -193,6 +199,10 @@
         }
         @media (max-width: 600px) {
             .vt-text {
+                margin: 20px;
+                font-size: 1em;
+            }
+            .vt-text-large {
                 margin: 20px;
                 font-size: 1em;
             }
@@ -419,12 +429,6 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-            let player = videojs("mmi-stagnes");
-            player.ready(function () {
-                player.on("loadedmetadata", function () {
-                    player.currentTime(11.8);
-                });
-            });
 
             const posterGrid = document.getElementById("poster-grid");
             const pageContainer = document.getElementById("main-content");
@@ -449,8 +453,9 @@
                     showPageContent();
                 });
             });
-
+console.log('adding previous gigs listener');
             document.getElementById('previous-gigs').addEventListener('click', function (event) {
+                console.log('previous gigs clicked');
                 event.preventDefault();
                 showPosterGrid();
                 checkWidthAndToggleMasonry();
@@ -560,8 +565,17 @@
                 </div>
             </div>
             -->
-            <div class="vt-text">
-                <p>Make yourself well with our debut EP <a href="venice-treacle-modern-elixir-smart-links" target="_blank">Modern Elixir</a></p>
+            <div class="vt-text-large">
+                <p class="flashing-text">*** New single <b>Bad Aji</b> coming on 12 Dec - <a href="https://hq.venicetreacle.com/bad-aji" target="_blank">pre-save it now</a> ***</p>
+                <style>
+                .flashing-text {
+                    animation: flash 2s infinite;
+                }
+                @keyframes flash {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0; }
+                }
+                </style>
             </div>
             <video
                 id="tamzma-session"
@@ -573,15 +587,15 @@
             >
             </video>
             <div class="vt-text">
-                <p>Venice Treacle distorts the four-piece boy band with right-angled riffs over rapturous rhythms to make dance punk psychedelia for our confusing times.</p>
+                <p>Groove-enhanced quirk punk for the progressively confused, Venice Treacle fuse acid-sharp riffs and rapturous rhythms into songs for troubled times.</p>
             </div>
             <h2 class="harlow-subtitle" style="margin-bottom:20px;" id="target-releases">
                 Releases
             </h2>
 
             <div class="coming-up-images two-posters">
-                <a href="https://open.spotify.com/album/5sJmvZSsK93gUpaz3s5KET" target="_blank">
-                    <img src="images/venice-treacle-modern-elixir-brown.png" alt="Modern Elixir - Broadcast Concentrate" title="Modern Elixir - Broadcast Concentrate">
+                <a href="https://hq.venicetreacle.com/bad-aji" target="_blank">
+                    <img src="images/venice_treacle_bad_aji.webp" alt="Bad Aji - Pre-save now!" title="Bad Aji - Pre-save now!">
                 </a>
                 <a href="venice-treacle-modern-elixir-smart-links" target="_blank">
                     <img src="images/venice_treacle_modern_elixir.webp" alt="Modern Elixir EP" title="Modern Elixir EP">
@@ -593,7 +607,7 @@
                 <img src="quank.svg" alt="Quank Rock" title="Quank Rock" style="width: 213px;">
             </div>
             -->
-            <!-- temporarily withdrawn -->
+            <!-- temporarily withdrawn 
             <h2 class="harlow-subtitle" style="margin-bottom:20px;" id="target-gigs">
                 Coming up ...
             </h2>
@@ -631,7 +645,7 @@
 					<img src="images/venice-treacle-minds-eye-2025-09-25.jpg" alt="Venice Treacle live at The Minds Eye, The Grove Theatre, Eastbourne">
                 </a>
 			</div>
-			-->
+			-- >
 
             <div class="vt-text">
 				<h2 style="margin-top:0;"> and come to these fabulous upcoming events all featuring Venice Treacle ...</h2>
@@ -641,8 +655,14 @@
 				</ul>
             </div>
 
-            <div class="vt-text link">
-                <a href="#previous-gigs" id="previous-gigs">Check out some of the gigs we have already played </a>
+            -->
+
+            <h2 class="harlow-subtitle" id="target-gigs" style="margin-bottom:20px;">
+                Gigs
+            </h2>
+
+            <div class="vt-text link" >
+                <a href="#previous-gigs" id="previous-gigs">Check out some of the gigs we have played</a>
             </div>
 
             <h2 class="harlow-subtitle" id="target-quank">
@@ -686,6 +706,9 @@
                     Earlier Gigs
                 </h2>
                 <div class="masonry-gallery">
+                    <a href="images/venice-treacle-trinity-bar-2025-11-15.jpg" data-lightbox="gig-gallery">
+                        <img src="images/venice-treacle-trinity-bar-2025-11-15.jpg" alt="Venice Treacle live at Trinity Bar, Harrow">
+                    </a>
                 	<a href="images/venice-treacle-valley-arts-2025-10-17.png" data-lightbox="gig-gallery">
 						<img src="images/venice-treacle-valley-arts-2025-10-17.png" alt="Venice Treacle live at Valley Arts, Chew Magna, Somerset">
                 	</a>

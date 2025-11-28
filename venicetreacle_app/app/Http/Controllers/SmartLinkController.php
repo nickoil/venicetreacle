@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\CallbackLog;
-use App\Models\PreSave;
+use App\Models\Presave;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -25,6 +25,8 @@ class SmartLinkController extends Controller
     {
         $success = true;
         $message = 'Successfully presaved';
+        $status = 'na';
+        $body = 'na';
 
         $code = $request->get('code');
         $state = $request->get('state');
@@ -47,6 +49,9 @@ class SmartLinkController extends Controller
                 'redirect_uri' => config('services.spotify.redirect_uri'),
             ]);
 
+            $status = $tokenResponse->status();
+            $body = $tokenResponse->body();
+
             if ($tokenResponse->failed()) {
                 $success = false;
                 $message = 'Failed to exchange code for token';
@@ -63,6 +68,9 @@ class SmartLinkController extends Controller
             // =====================
             $userResponse = Http::withToken($accessToken)->get('https://api.spotify.com/v1/me');
 
+            $status = $userResponse->status();
+            $body = $userResponse->body();
+
             if ($userResponse->failed()) {
                 $success = false;
                 $message = 'Failed to get user profile';
@@ -76,7 +84,7 @@ class SmartLinkController extends Controller
             // =====================
             // Store Pre-Save
             // =====================
-            PreSave::updateOrCreate(
+            Presave::updateOrCreate(
             ['spotify_user_id' => $user['id'], 'track_id' => $state],
             [
                 'display_name' => $user['display_name'] ?? null,
@@ -96,8 +104,8 @@ class SmartLinkController extends Controller
             'code' => $code,
             'request_data' => $request->all(),
             'success' => $success,
-            'status' => $tokenResponse->status() ?? null,
-            'body' => $tokenResponse->body() ?? null,
+            'status' => $status,
+            'body' => $body,
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
             'message' => $message,

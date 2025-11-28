@@ -35,6 +35,9 @@
                         <input id="sort_direction" name="sort_direction" type="hidden">
 
                         <div class="min-w-full flex flex-wrap mb-4">
+                            <x-filter-box :title="__('Track ID')">
+                                <x-filter-select :name="'track_id'" :items="$trackOptions" :selected="Request::input('track_id')" />
+                            </x-filter-box>
                             <x-filter-box :title="__('Display Name')">
                                 <x-filter-text :name="'display_name'" />
                             </x-filter-box>
@@ -43,9 +46,6 @@
                             </x-filter-box>
                             <x-filter-box :title="__('Country')">
                                 <x-filter-select :name="'country'" :items="$countryOptions" :selected="Request::input('country')" />
-                            </x-filter-box>
-                            <x-filter-box :title="__('Track ID')">
-                                <x-filter-select :name="'track_id'" :items="$trackOptions" :selected="Request::input('track_id')" />
                             </x-filter-box>
                             <x-filter-box :title="__('Date From')">    
                                 <x-filter-date :name="'date_from'" />

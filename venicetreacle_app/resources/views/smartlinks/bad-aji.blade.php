@@ -4,7 +4,7 @@
         Bad Aji
     </x-slot>
         
-    <img src="/smartlink_resources/images/venice_treacle_bad_aji.png" alt="Album Cover" class="album-cover">
+    <img src="/smartlink_resources/images/venice_treacle_bad_aji.webp" alt="Album Cover" class="album-cover">
     
     <x-audio-previewer></x-audio-previewer>
     

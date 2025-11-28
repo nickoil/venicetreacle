@@ -10,6 +10,9 @@
                 <x-sort-table-header :sortField="'created_at'">
                     {{ __('Time') }}
                 </x-sort-table-header>
+                <x-sort-table-header :sortField="'track_id'">
+                    {{ __('Track') }}
+                </x-sort-table-header>
                 <x-sort-table-header :sortField="'profile_images'">
                     {{ __('Profile Image') }}
                 </x-sort-table-header>
@@ -22,10 +25,6 @@
                 <x-sort-table-header :sortField="'country'">
                     {{ __('Country') }}
                 </x-sort-table-header>
-                <x-sort-table-header :sortField="'track_id'">
-                    {{ __('Track') }}
-                </x-sort-table-header>
-                
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
@@ -33,6 +32,9 @@
                 <tr>
                     <x-table-cell>
                         {{ $listItem->created_at }}
+                    </x-table-cell>
+                    <x-table-cell>
+                        {{ $listItem->track_id }}
                     </x-table-cell>
                     <x-table-cell>
                         @if($listItem->profile_images)
@@ -71,9 +73,7 @@
                     <x-table-cell>
                         {{ $listItem->country }}
                     </x-table-cell>
-                    <x-table-cell>
-                        {{ $listItem->track_id }}
-                    </x-table-cell>
+
                 </tr>
             @endforeach
         </tbody>
