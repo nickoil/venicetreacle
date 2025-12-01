@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Hero Section (Force Cover/Crop) - Fixed Header</title>
+    
+    <style>
+        /* --- General Body Styling --- */
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .main-content {
+            padding: 20px;
+            /* Default padding for mobile (adjust as needed if mobile hero height differs) */
+            padding-top: 20px; 
+        }
+
+        /* --- Hero Video Styling --- */
+        
+        .hero-video-container {
+            width: 100%;
+            position: relative; /* Needed for positioning the video and overlay */
+            overflow: hidden; /* Hides the cropped parts of the video */
+            background-color: #000; /* Black background while video loads */
+            height: 200px; /* Set a fixed height for all screen sizes for consistency */
+        }
+
+        .hero-video-container video {
+            width: 100%;
+            height: 100%; 
+            display: block; 
+            margin: 0 auto;
+            object-fit: cover; /* THIS IS THE KEY PROPERTY to force filling/cropping */
+            position: absolute; 
+            top: 0;
+            left: 0;
+        }
+
+        /* The content overlay sits on top of the video */
+        .hero-content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Puts content above the video */
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.35); /* Semi-transparent overlay for readability */
+        }
+
+        /* --- Ensure Content Below the Header is Visible on Desktop --- */
+        @media screen and (min-width: 992px) { 
+            /* Push the main content down by the exact height of the header (200px) */
+            .main-content {
+                padding-top: 220px; /* 200px for the hero + 20px for content padding */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-video-container">
+            <!-- 
+                IMPORTANT: Replace 'your_video.mp4' and 'placeholder_image.jpg' 
+                with the actual paths to your video file and poster image.
+            -->
+            <video autoplay loop muted playsinline poster="placeholder_image.jpg">
+                <source src="images-epk/shoulder-hit.gif" type="video/mp4">
+                <!-- Add a .webm source if available -->
+                Your browser does not support the video tag.
+            </video>
+            
+            <div class="hero-content-overlay">
+                <h1>The Header is Visible!</h1>
+                <p>Content below won't be hidden.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h2>Welcome to the rest of the page</h2>
+        <p>The video above should perfectly fill the container's width and height, cropping the video to ensure no empty space. The content you are reading now is correctly positioned below the header.</p>
+    </main>
+
+</body>
+</html>
