@@ -31,10 +31,10 @@
         </main>
 
         <div class="social-icons">
-            <a class="social-icon" data-social="website" href="https://venicetreacle.com" target="_blank"><img src="/smartlink_resources/icons/venice_treacle_favicon.png" alt="Venice Treacle Logo" style="border-radius:5px;"></a>
-            <a class="social-icon" data-social="facebook" href="https://www.facebook.com/venicetreacle" target="_blank"><img src="/smartlink_resources/icons/FB-colour.png" alt="Facebook Logo"></a>
-            <a class="social-icon" data-social="instagram" href="https://www.instagram.com/venicetreacle" target="_blank"><img src="/smartlink_resources/icons/Insta-colour.svg" alt="Instagram Logo"></a>
-            <a class="social-icon" data-social="youtube" href="https://www.youtube.com/@venicetreacle" target="_blank"><img src="/smartlink_resources/icons/YouTube-colour.png" alt="YouTube Logo"></a>
+            <a class="social-icon" data-social="website" href="https://venicetreacle.com" target="_blank"><img src="/icons/venice_treacle_favicon.png" alt="Venice Treacle Logo" style="border-radius:5px;"></a>
+            <a class="social-icon" data-social="facebook" href="https://www.facebook.com/venicetreacle" target="_blank"><img src="/icons/FB-colour.png" alt="Facebook Logo"></a>
+            <a class="social-icon" data-social="instagram" href="https://www.instagram.com/venicetreacle" target="_blank"><img src="/icons/Insta-colour.svg" alt="Instagram Logo"></a>
+            <a class="social-icon" data-social="youtube" href="https://www.youtube.com/@venicetreacle" target="_blank"><img src="/icons/YouTube-colour.png" alt="YouTube Logo"></a>
         </div>
         
     </div>

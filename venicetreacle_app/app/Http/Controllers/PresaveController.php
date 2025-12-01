@@ -19,8 +19,8 @@ class PresaveController extends Controller
     protected function query(Request &$request) {
 
         // sort
-        if(!$request->sort_field) $request->sort_field = 'display_name';
-        if(!$request->sort_direction) $request->sort_direction = 'asc';
+        $request->sort_field = $request->sort_field ?? 'created_at';
+        $request->sort_direction = $request->sort_direction ?? 'desc';
 
         $sortField = $request->sort_field;
         $sortDirection = $request->sort_direction;

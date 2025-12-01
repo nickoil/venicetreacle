@@ -92,17 +92,39 @@
 
                         <x-slot name="content">
 
-                            <x-dropdown-link :href="route('presaves.index')" :active="request()->routeIs('presaves.index')" @click="translationsMenu = ! translationsMenu">
+                            <x-dropdown-link :href="route('presaves.index')" :active="request()->routeIs('presaves.index')" @click="streamersMenu = ! streamersMenu">
                                 {{ __('Pre-Saves') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link :href="route('callback-logs.index')" :active="request()->routeIs('callback-logs.index')" @click="translationsMenu = ! translationsMenu">
+                            <x-dropdown-link :href="route('callback-logs.index')" :active="request()->routeIs('callback-logs.index')" @click="streamersMenu = ! streamersMenu">
                                 {{ __('Callback Log') }}
                             </x-dropdown-link>
 
                         </x-slot>
                     </x-dropdown>
                 </div>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    <x-dropdown align="left" width="w-40" menuName="marketingMenu"  >
+                        <x-slot name="trigger">
+                            <x-nav-link class="cursor-pointer">
+                                <div>{{__('Marketing')}}</div>
+                                <x-nav-down-arrow />
+                            </x-nav-link>
+
+                        </x-slot>
+
+                        <x-slot name="content">
+
+                            <x-dropdown-link :href="route('page-visits.index')" :active="request()->routeIs('page-visits.index')" @click="marketingMenu = ! marketingMenu">
+                                {{ __('Page Visits') }}
+                            </x-dropdown-link>
+
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+
+
             </div>
 
             <!-- Settings Dropdown -->

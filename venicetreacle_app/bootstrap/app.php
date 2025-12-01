@@ -12,7 +12,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
             Route::middleware('web')
-                ->group(base_path('routes/smartlinks.php'));
+                ->group(base_path('routes/smartlinks.php'))
+                ->group(base_path('routes/epks.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware): void {

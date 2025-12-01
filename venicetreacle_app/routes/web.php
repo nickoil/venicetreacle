@@ -73,5 +73,10 @@ Route::prefix('presaves')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/export', [\App\Http\Controllers\PresaveController::class, 'export'])->name('presaves.export');
 });
 
+Route::prefix('page-visits')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\PageVisitController::class, 'index'])->name('page-visits.index');
+    Route::get('/export', [\App\Http\Controllers\PageVisitController::class, 'export'])->name('page-visits.export');
+});
+
 
 require __DIR__.'/auth.php';

@@ -16,15 +16,15 @@
         Listen on&nbsp;<img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_Green-300x82.png" alt="Spotify Logo">
     </a>
     <a href="https://venicetreacle.bandcamp.com" target="_blank" class="music-button" data-service="bandcamp">
-        Listen on&nbsp;<img src="/smartlink_resources/icons/bandcamp-logotype-color-512.png" alt="Bandcamp Logo">
+        Listen on&nbsp;<img src="/icons/bandcamp-logotype-color-512.png" alt="Bandcamp Logo">
     </a>
     
     <a href="https://music.apple.com/us/album/modern-elixir-ep/1793409540" target="_blank" class="music-button" data-service="apple-music">
-        Listen on&nbsp;<img src="/smartlink_resources/icons/Apple_Music.svg" alt="Apple Music Logo" />&nbsp;Apple Music
+        Listen on&nbsp;<img src="/icons/Apple_Music.svg" alt="Apple Music Logo" />&nbsp;Apple Music
     </a>
 
     <a href="https://soundcloud.com/venice-treacle/sets/modern-elixir" target="_blank" class="music-button" data-service="soundcloud">
-        Listen on&nbsp;<img src="/smartlink_resources/icons/soundcloud_logo.svg" alt="SOUNDCLOUD Logo" style="height:1em;" />
+        Listen on&nbsp;<img src="/icons/soundcloud_logo.svg" alt="SOUNDCLOUD Logo" style="height:1em;" />
     </a>
 
     @once

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Venice Treacle - Bad Aji (EPK)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/epk_resources/bad-aji/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/epk_resources/bad-aji/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/epk_resources/bad-aji/favicons/favicon-16x16.png">
+<link rel="manifest" href="/epk_resources/bad-aji/favicons/site.webmanifest">
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #111;
+        color: #f4f4f4;
+        line-height: 1.6;
+    }
+    h1, h2, h3 {
+        font-weight: 600;
+        margin-bottom: 0.5em;
+        color: #fff;
+    }
+    a { color: #66c5ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .section {
+        max-width: 900px;
+        padding: 20px 20px;
+        margin: auto;
+        border-bottom: 1px solid #333;
+    }
+
+    .hero {
+        position: relative;
+        /*width: 100%;
+        aspect-ratio: 16 / 9;      / * Ensures 16:9 ratio on desktop */
+        max-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        /*padding: 120px 20px;*/
+        min-height:420px;
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            /*height: 75vh;       taller on mobile
+            min-height: 480px; */
+        }
+    }
+
+    /* -------- BACKGROUND IMAGE -------- */
+
+    .hero img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right 25%; /* Always show the top of the image */
+        z-index: -2;
+    }
+
+    /* Optional dark fade for readability */
+    .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.4),
+            rgba(0,0,0,0.75)
+        );
+        z-index: -1;
+    }
+
+    /* -------- HERO TEXT -------- */
+
+    .hero-text {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin: 0 0 0.5rem;
+    }
+
+    .hero h2 {
+        margin: 0 0 0.3rem;
+    }
+
+    .hero h3 {
+        font-weight: 300;
+        margin: 0.25rem 0;
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+        .hero h3 {
+            font-size: 1rem;
+        }
+
+        .hero-text {
+            width: 100%;
+            padding: 0 10px;
+        }
+    }
+
+
+
+    .button-row {
+        margin-top: 20px;
+    }
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        background: #66c5ff;
+        color: #111;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    .press-images img {
+        max-width: 30%;
+        margin: 1%;
+        border-radius: 6px;
+    }
+
+    .press-quotes blockquote { font-style:italic; margin:1rem 0; padding-left:1rem; border-left:4px solid #ff5500;}
+    
+
+    .footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 0.9rem;
+        color: #aaa;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <!--<img src="images-epk/shoulder-hit.gif" alt="Bad Aji Hero Image">-->
+    <video src="/epk_resources/bad-aji/images/shoulder-hit.mp4"
+        poster="/epk_resources/bad-aji/images/shoulder-hit.png"
+        autoplay loop muted playsinline
+        style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:right 25%;z-index:-2;">
+    </video>
+
+    <div class="hero-text">
+        <h1>Venice Treacle - “Bad Aji”</h1>
+        <h2>A Quank-Driven Pop Nugget for Man Against the Machine</h2>
+        <h3>Out 12 December 2025</h3>
+   
+
+        <!-- Press-only button -->
+        <a href="https://on.soundcloud.com/s3uAsSaovNhtqPMtig" target="_blank"
+            style="display:inline-block; margin-top:1rem; padding:0.75rem 1.5rem; 
+                    background:#ff5500; color:#fff; text-decoration:none; font-weight:bold; 
+                    border-radius:4px;">Listen (For Press Only)</a>
+        <p style="font-size:0.85rem; color:#ddd; margin-top:0.5rem;">
+            Pre-release stream - please do not share publicly.
+        </p>
+
+     </div>
+</section>
+
+<!-- ABOUT THE SINGLE -->
+<div class="section">
+    <h2>About “Bad Aji”</h2>
+    <p>
+        <em>Bad Aji</em> takes inspiration from legendary Go master Lee Sedol and his historic 
+        defeat in 2016 by a computer program, DeepMind's AlphaGo. In one 
+        game, the machine made a move that no human would ever consider - a move 
+        first dismissed as a mistake. But deeper analysis revealed the brilliance 
+        of the shoulder hit, and that it was a turning point for both the match 
+        and for what AI could do.
+    </p>
+    <p>
+    	Venice Treacle reinterpret the confrontation through the band's self-styled 
+        "Quank" aesthetic: wonky rhythmic jolts and melodic fragments mirror the 
+        shifting dynamics of Sedol’s battle, an early engagement in an enduring 
+        war which the algorithms seem to be winning. The band hasten to reassure 
+        that Bad Aji was composed, performed and mixed entirely by humans. It was recorded
+        at Rockfield Studios, Monmouth and at the Riffadrome in Bristol.
+    </p>    
+	
+</div>
+
+
+<!-- SHORT BIO -->
+<div class="section">
+    <h2>About Venice Treacle</h2>
+
+    <img src="/epk_resources/bad-aji/images/venice-treacle-band-shot.png" alt="Venice Treacle Band Photo" 
+            style="width:100%; display:block; margin:20px auto; ">
+
+    <p>
+        Groove-enhanced quirk punk for the progressively confused (file under no-wave, 
+        kosmische psychedelia and quank), Venice Treacle mix acid-sharp guitar riffs with 
+        rapturous rhythms to make songs for our troubled times. Formed in 2024 from 
+        unspooled cassette tapes, and named after the English version of Theriac — the world&apos;s 
+        first branded pharmaceutical — the band offers an antidote to the modern madness.
+    </p>
+
+    <p><a href="press_pack.pdf" download>Download Venice Treacle Press Pack</a></p>
+
+</div>
+
+
+<!-- LISTEN / WATCH -->
+<div class="section">
+    <h2>Listen / Watch</h2>
+    <p>Audio:</p>
+    <!--<ul>
+        <li><a href="#">Spotify</a></li>
+        <li><a href="#">Apple Music</a></li>
+        <li><a href="#">SoundCloud</a></li>
+    </ul>-->
+    <a href="https://on.soundcloud.com/s3uAsSaovNhtqPMtig" target="_blank">SoundCloud (Press Only)</a>
+
+    <p>Video:</p>
+    <!-- Replace with actual video embed -->
+    <section class="song-video">
+        <video src="/epk_resources/bad-aji/images/bad-aji-clip.mp4" controls muted autoplay loop playsinline
+            style="width:100%; max-width:400px; height:auto; display:block; margin:20px auto; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+        </video>
+    </section>
+</div>
+
+<!-- PRESS IMAGES -->
+<div class="section">
+    <h2>Press Photos & Artwork</h2>
+    <p>High-resolution images for editorial use. Please credit Venice Treacle.</p>
+    
+    <!-- Band photos -->
+    <h4>Band Photos</h4>
+    <a href="/epk_resources/bad-aji/images/venice-treacle-live.png">
+        <img src="/epk_resources/bad-aji/images/venice-treacle-live.png" alt="Venice Treacle live on stage"
+            style="max-width:400px; width:100%; height:auto; display:block; margin:20px auto; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+    </a>
+    <p><a href="/epk_resources/bad-aji/images/venice-treacle-live.png" download>Download live image</a></p>
+    <a href="/epk_resources/bad-aji/images/venice-treacle-live-2.png">
+        <img src="/epk_resources/bad-aji/images/venice-treacle-live-2.png" alt="Venice Treacle live on stage"
+            style="max-width:400px; width:100%; height:auto; display:block; margin:20px auto; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+    </a>
+    <p><a href="/epk_resources/bad-aji/images/venice-treacle-live-2.png" download>Download live image</a></p>
+    <h4>Bad Aji Artwork</h4>
+    <a href="/epk_resources/bad-aji/images/venice-treacle-bad-aji-album-cover.webp">
+        <img src="/epk_resources/bad-aji/images/venice-treacle-bad-aji-album-cover.webp" alt="Bad Aji album cover by Venice Treacle" 
+            style="max-width:400px; width:100%; height:auto; display:block; margin:20px auto; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+    </a>
+    <p><a href="/epk_resources/bad-aji/images/venice-treacle-bad-aji-album-cover.png" download>Download Bad Aji artwork</a></p>
+
+<!--
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 30px 0;">
+        <div style="flex: 1 1 200px; max-width: 220px; text-align: center;">
+            <img src="images-epk/venice-treacle-nick-oil.jpg" alt="Nick Oil" style="width:100%; ">
+            <p style="margin-top:8px; color:#ccc;">Nick Oil</p>
+        </div>
+        <div style="flex: 1 1 200px; max-width: 220px; text-align: center;">
+            <img src="images-epk/venice-treacle-mondel-plamid.jpg" alt="Mondel Plamid" style="width:100%; ">
+            <p style="margin-top:8px; color:#ccc;">Mondel Plamid</p>
+        </div>
+        <div style="flex: 1 1 200px; max-width: 220px; text-align: center;">
+            <img src="images-epk/venice-treacle-ritalian.jpg" alt="Ritalian" style="width:100%; ">
+            <p style="margin-top:8px; color:#ccc;">Ritalian</p>
+        </div>
+        <div style="flex: 1 1 200px; max-width: 220px; text-align: center;">
+            <img src="images-epk/venice-treacle-k-boy.jpg" alt="K Boy" style="width:100%; ">
+            <p style="margin-top:8px; color:#ccc;">K Boy</p>
+        </div>
+    </div>
+-->
+    <!-- Logo -->
+    <h4>Logo</h4>
+    <a href="/epk_resources/bad-aji/images/venice-treacle-logo.png">
+        <img src="/epk_resources/bad-aji/images/venice-treacle-logo.png" alt="Venice Treacle logo"
+            style="max-width:400px; width:100%; height:auto; display:block; margin:20px auto; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+    </a>
+    <p><a href="/epk_resources/bad-aji/images/venice-treacle-logo.png" download>Download logo</a></p>
+</div>
+
+
+<!-- PRESS QUOTES -->
+<div class="section press-quotes">
+    <h2>Press Quotes</h2>
+    <blockquote>
+        “Venice Treacle create engaging grooves with jagged guitars, incendiary drums, and elastic basslines, blending quirky melodies reminiscent of Squid and Dry Cleaning. Their live show is energetic, inventive, and utterly captivating.” — <em>musomuso.com, Jan ‘25</em>
+    </blockquote>
+    <blockquote>
+        “Nickoil throws angular shapes and delivers cryptic lyrics, rhyming 'Pina Colada' with 'Eric Estrada' on the Beefheart-adjacent, Feelies-like nerd punk of 'Fabada'. Smart heady and possibly addictive, Venice Treacle might be the medicine you need!” — <em>Shindig Magazine, Nov ‘25</em>
+    </blockquote>
+</div>
+
+<div class="section highlights">
+    <h2>Highlights</h2>
+    <ul>
+        <li>Boardmasters Festival 2025</li>
+        <li>Cornish Bank's Summer Camp 2025</li>
+        <li>Surfers Against Sewage Anniversary Ball 2025</li>
+        <li>Live at Scorrier House 2025</li>
+        <li>
+            BBC Introducing played all four tracks from debut EP <a href="https://open.spotify.com/track/0Wo0bFU0otjR9nhCX8AkQs?si=e50890cac9b6483c" target="_blank">Modern Elixir</a>
+        </li>
+    </ul>
+</div>
+
+<!-- LIVE SECTION -->
+<div class="section">
+    <h2>Next Performance</h2>    
+    <ul>
+        <li>
+            <strong>The Old England, Bristol</strong><br>
+            <span style="color:#ff5500;">24 January 2026</span>
+        </li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Connect</h2> 
+    <div style="margin:0.5rem 20px;">
+        <!-- Website / Press Pack -->
+        <a href="https://venicetreacle.com/" title="Venice Treacle Website" target="_blank" style="margin:0 0.5rem;">
+            <img src="images/venice_treacle_favicon.png" alt="Website" width="32" height="32" style="border-radius:5px;"></a>
+        <!-- Instagram -->
+        <a href="https://instagram.com/venicetreacle" title="Venice Treacle Instagram" target="_blank" style="margin:0 0.5rem;">
+            <img src="icons/Insta-colour.svg" alt="Instagram" width="32" height="32" /></a>
+        <!-- Facebook -->
+        <a href="https://facebook.com/venicetreacle" title="Venice Treacle Facebook" target="_blank" style="margin:0 0.5rem;">
+            <img src="icons/FB-colour.png" alt="Facebook" width="32" height="32"></a>
+        <!-- TikTok -->
+        <a href="https://www.youtube.com/@venicetreacle"  title="Venice Treacle YouTube" target="_blank" style="margin:0 0.5rem;">
+            <img src="icons/YouTube-colour.png" alt="YouTube" width="32" height="32"></a>
+       
+        <!-- Pre-save / Streaming -->
+        <a href="https://hq.venicetreacle.com/bad-aji" target="_blank" style="margin:0 0.5rem;" title="Bad Aji Pre-save">
+            <img src="/epk_resources/bad-aji/images/venice-treacle-bad-aji-album-cover.webp" alt="Bad Aji Pre-save" width="32" height="32" style="border-radius:5px;">
+        </a>
+    </div>
+    <p style="margin-top:0.5rem;">
+        Email: <a href="mailto:contact@venicetreacle.com">contact@venicetreacle.com</a>
+    </p>
+</div>
+
+<div class="footer">
+    © Venice Treacle — Bad Aji EPK
+</div>
+
+</body>
+</html>

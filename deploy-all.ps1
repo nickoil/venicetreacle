@@ -60,6 +60,12 @@ sudo cp -a /var/www/fixed/venicetreacle/.env ${deployPath}.new/venicetreacle_app
 sudo mv ${deployPath} ${deployPath}.old 2>/dev/null || true
 sudo mv ${deployPath}.new ${deployPath}
 sudo rm -rf ${deployPath}.old
+cd ${deployPath}/venicetreacle_app
+php artisan migrate --force
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
 "@
 
 # === Step 6: Return to original folder ===

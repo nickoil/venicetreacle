@@ -50,7 +50,7 @@ sudo mkdir -p ${deployPath}.new
 sudo tar -xzf /tmp/venicetreacle_web_build.tar.gz -C ${deployPath}.new
 sudo rm /tmp/venicetreacle_web_build.tar.gz
 sudo mv ${deployPath} ${deployPath}.old 2>/dev/null || true
-sudo mv ${deployPath}.new/* ${deployPath}/
+sudo mv ${deployPath}.new ${deployPath}
 sudo rm -rf ${deployPath}.new
 sudo rm -rf ${deployPath}.old
 "@
