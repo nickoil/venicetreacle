@@ -188,7 +188,8 @@
 <div class="section">
     <h2>About “Bad Aji”</h2>
     <p>
-        <em>Bad Aji</em> takes inspiration from legendary Go master Lee Sedol and his historic 
+        <em>Bad Aji</em> (pronounced "ah-jee", like the letter G) takes inspiration 
+        from legendary Go master Lee Sedol and his historic 
         defeat in 2016 by a computer program, DeepMind's AlphaGo. In one 
         game, the machine made a move that no human would ever consider - a move 
         first dismissed as a mistake. But deeper analysis revealed the brilliance 
@@ -198,7 +199,7 @@
     <p>
     	Venice Treacle reinterpret the confrontation through the band's self-styled 
         "Quank" aesthetic: wonky rhythmic jolts and melodic fragments mirror the 
-        shifting dynamics of Sedol’s battle, an early engagement in an enduring 
+        shifting dynamics of Sedol&apos;s battle, an early engagement in an enduring 
         war which the algorithms seem to be winning. The band hasten to reassure 
         that Bad Aji was composed, performed and mixed entirely by humans. It was recorded
         at Rockfield Studios, Monmouth and at the Riffadrome in Bristol.
@@ -308,7 +309,7 @@
         “Venice Treacle create engaging grooves with jagged guitars, incendiary drums, and elastic basslines, blending quirky melodies reminiscent of Squid and Dry Cleaning. Their live show is energetic, inventive, and utterly captivating.” — <em>musomuso.com, Jan ‘25</em>
     </blockquote>
     <blockquote>
-        “Nickoil throws angular shapes and delivers cryptic lyrics, rhyming 'Pina Colada' with 'Eric Estrada' on the Beefheart-adjacent, Feelies-like nerd punk of 'Fabada'. Smart heady and possibly addictive, Venice Treacle might be the medicine you need!” — <em>Shindig Magazine, Nov ‘25</em>
+        “Nick Oil throws angular shapes and delivers cryptic lyrics, rhyming 'Pina Colada' with 'Eric Estrada' on the Beefheart-adjacent, Feelies-like nerd punk of 'Fabada'. Smart heady and possibly addictive, Venice Treacle might be the medicine you need!” — <em>Shindig Magazine, Nov ‘25</em>
     </blockquote>
 </div>
 
@@ -344,13 +345,13 @@
             <img src="images/venice_treacle_favicon.png" alt="Website" width="32" height="32" style="border-radius:5px;"></a>
         <!-- Instagram -->
         <a href="https://instagram.com/venicetreacle" title="Venice Treacle Instagram" target="_blank" style="margin:0 0.5rem;">
-            <img src="icons/Insta-colour.svg" alt="Instagram" width="32" height="32" /></a>
+            <img src="/smartlink_resources/icons/Insta-colour.svg" alt="Instagram" width="32" height="32" /></a>
         <!-- Facebook -->
         <a href="https://facebook.com/venicetreacle" title="Venice Treacle Facebook" target="_blank" style="margin:0 0.5rem;">
-            <img src="icons/FB-colour.png" alt="Facebook" width="32" height="32"></a>
+            <img src="/smartlink_resources/icons/FB-colour.png" alt="Facebook" width="32" height="32"></a>
         <!-- TikTok -->
         <a href="https://www.youtube.com/@venicetreacle"  title="Venice Treacle YouTube" target="_blank" style="margin:0 0.5rem;">
-            <img src="icons/YouTube-colour.png" alt="YouTube" width="32" height="32"></a>
+            <img src="/smartlink_resources/icons/YouTube-colour.png" alt="YouTube" width="32" height="32"></a>
        
         <!-- Pre-save / Streaming -->
         <a href="https://hq.venicetreacle.com/bad-aji" target="_blank" style="margin:0 0.5rem;" title="Bad Aji Pre-save">
