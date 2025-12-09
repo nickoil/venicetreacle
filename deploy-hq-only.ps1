@@ -53,20 +53,21 @@ scp "$tarFile" "${remoteHost}:/tmp/venicetreacle_hq_build.tar.gz"
 Write-Host "Extracting and swapping on server..."
 ssh $remoteHost @"
 set -e
+sudo rm -rf ${deployPath}.old # do this at the beginning and leave in place afterwards in case of failure
 sudo mkdir -p ${deployPath}.new
 sudo tar -xzf /tmp/venicetreacle_hq_build.tar.gz -C ${deployPath}.new
 sudo rm /tmp/venicetreacle_hq_build.tar.gz
-sudo cp -a /var/www/fixed/venicetreacle/.env ${deployPath}.new 2>/dev/null || true
+sudo cp -a ${deployPath}/.env ${deployPath}.new 2>/dev/null || true
+sudo cp -a ${deployPath}/storage ${deployPath}.new 2>/dev/null || true
 sudo mv ${deployPath} ${deployPath}.old 2>/dev/null || true
 sudo mv ${deployPath}.new ${deployPath}
-sudo rm -rf ${deployPath}.new
-sudo rm -rf ${deployPath}.old
 cd ${deployPath}
 php artisan migrate --force
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
+php artisan storage:link
 "@
 
 # === Step 6: Return to original folder ===
