@@ -17,6 +17,12 @@
                             {{ __('Pre-Saves') }}
                         </h2>
                         <div>
+                            @if(in_array(auth()->user()->role->title, ['Administrator']))
+                            <x-primary-button-link href="{{ route('presaves.save-track-to-all', ['track_uri' => 'bad-aji:2JFZlBx722B6hvuwNLdLFt']) }}" >
+                                <i class="fa-solid fa-save mr-1"></i>
+                                {{ __('Save Bad Aji') }}
+                            </x-primary-button-link>
+                            @endif
                             <x-primary-button-link href="{{ route($route . '.export') }}" >
                                 <i class="fa-solid fa-file-export mr-1"></i>
                                 {{ __('Export') }}

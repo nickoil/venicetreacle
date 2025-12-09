@@ -16,10 +16,12 @@ class Presave extends Model
         'refresh_token',
         'track_id',
         'state',
+        'saved_at',
     ];
 
 
     protected $casts = [
         'profile_images' => 'array',
+        'saved_at' => 'datetime',
     ];
 }

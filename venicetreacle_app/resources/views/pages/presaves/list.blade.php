@@ -25,6 +25,9 @@
                 <x-sort-table-header :sortField="'country'">
                     {{ __('Country') }}
                 </x-sort-table-header>
+                <x-sort-table-header :sortField="'saved_at'">
+                    {{ __('Saved Time') }}
+                </x-sort-table-header>
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
@@ -73,7 +76,9 @@
                     <x-table-cell>
                         {{ $listItem->country }}
                     </x-table-cell>
-
+                    <x-table-cell>
+                        {{ $listItem->saved_at ?? 'Not Saved' }}
+                    </x-table-cell>
                 </tr>
             @endforeach
         </tbody>

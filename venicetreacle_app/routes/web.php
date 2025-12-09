@@ -71,6 +71,9 @@ Route::prefix('callback-logs')->middleware(['auth', 'verified'])->group(function
 Route::prefix('presaves')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [\App\Http\Controllers\PresaveController::class, 'index'])->name('presaves.index');
     Route::get('/export', [\App\Http\Controllers\PresaveController::class, 'export'])->name('presaves.export');
+    Route::get('/save-track-to-all', [\App\Http\Controllers\PresaveController::class, 'saveTrackToAll'])
+        ->middleware(['checkRole:Administrator'])
+        ->name('presaves.save-track-to-all');
 });
 
 Route::prefix('page-visits')->middleware(['auth', 'verified'])->group(function () {

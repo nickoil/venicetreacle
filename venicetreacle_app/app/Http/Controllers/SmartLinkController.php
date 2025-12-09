@@ -118,7 +118,7 @@ class SmartLinkController extends Controller
         }
 
         CallbackLog::create([
-            'service' => 'spotify',
+            'service' => 'spotify-presave-track',
             'state' => $state,
             'code' => $code,
             'request_data' => $request->all(),
