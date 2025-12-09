@@ -24,28 +24,31 @@
             Pre-save to &nbsp;<img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_Green-300x82.png" alt="Spotify Logo">
         </a>
     @else
-        <p class="description">Help us beat the algorithm! Pre-save the groovy new number from Venice Treacle to Spotify</p>
-        <a id="spotifyPresaveButton" target="_blank" class="music-button" data-service="spotify">
-            Pre-save to &nbsp;<img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_Green-300x82.png" alt="Spotify Logo">
-        </a>
+        
+        @if($now->greaterThanOrEqualTo($releaseDate))
+            <p class="description">As technology changes how (and if) you use your mind, Venice Treacle brings you a new, entirely human-made track designed to help you lose it.</p>
+
+            <a href="https://open.spotify.com/track/2JFZlBx722B6hvuwNLdLFt?si=vt_smartlink" target="_blank" class="music-button" data-service="spotify">
+                Listen to Bad Aji on&nbsp;<img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_Green-300x82.png" alt="Spotify Logo">
+            </a>
+            <a href="https://venicetreacle.bandcamp.com/track/bad-aji" target="_blank" class="music-button" data-service="bandcamp">
+                Listen to Bad Aji on&nbsp;<img src="/smartlink_resources/icons/bandcamp-logotype-color-512.png" alt="Bandcamp Logo">
+            </a>
+            <a href="https://music.apple.com/album/1855846919?i=1855846920" target="_blank" class="music-button" data-service="apple-music">
+                Listen to Bad Aji on&nbsp;<img src="/smartlink_resources/icons/Apple_Music.svg" alt="Apple Music Logo" />&nbsp;Apple Music
+            </a>
+            <a href="https://soundcloud.com/venice-treacle/bad-aji/s-KUgUmBjXl28" target="_blank" class="music-button" data-service="soundcloud">
+                Listen to Bad Aji on&nbsp;<img src="/smartlink_resources/icons/soundcloud_logo.svg" alt="SOUNDCLOUD Logo" style="height:1em;" />
+            </a>
+        @else
+            <p class="description">Help us beat the algorithm! Pre-save the groovy new number from Venice Treacle to Spotify</p>
+            <a id="spotifyPresaveButton" target="_blank" class="music-button" data-service="spotify">
+                Pre-save to &nbsp;<img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_Green-300x82.png" alt="Spotify Logo">
+            </a>
+        @endif
+
     @endif
     
-    <!--
-    <a href="https://open.spotify.com/artist/3bWqCt417V9s9SryrvM1aq?si=hn5GudiSQLeKAWBJhC39Yw" target="_blank" class="music-button" data-service="spotify">
-        Listen on&nbsp;<img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_Green-300x82.png" alt="Spotify Logo">
-    </a>
-    <a href="https://venicetreacle.bandcamp.com" target="_blank" class="music-button" data-service="bandcamp">
-        Listen on&nbsp;<img src="/smartlink_resources/icons/bandcamp-logotype-color-512.png" alt="Bandcamp Logo">
-    </a>
-    
-    <a href="https://music.apple.com/us/album/modern-elixir-ep/1793409540" target="_blank" class="music-button" data-service="apple-music">
-        Listen on&nbsp;<img src="/smartlink_resources/icons/Apple_Music.svg" alt="Apple Music Logo" />&nbsp;Apple Music
-    </a>
-
-    <a href="https://soundcloud.com/venice-treacle/sets/modern-elixir" target="_blank" class="music-button" data-service="soundcloud">
-        Listen on&nbsp;<img src="/smartlink_resources/icons/soundcloud_logo.svg" alt="SOUNDCLOUD Logo" style="height:1em;" />
-    </a>
-    -->
 
     @once
     

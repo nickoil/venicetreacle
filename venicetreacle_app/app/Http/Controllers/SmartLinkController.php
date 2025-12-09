@@ -17,7 +17,9 @@ class SmartLinkController extends Controller
 
     public function badAji()
     {
-        return view('smartlinks.bad-aji');
+        $releaseDate = \Carbon\Carbon::create(2025, 12, 12, 11, 0, 0, 'GMT');
+        $now = \Carbon\Carbon::now('GMT');
+        return view('smartlinks.bad-aji', compact('releaseDate', 'now'));
     }
 
 
@@ -79,7 +81,24 @@ class SmartLinkController extends Controller
 
         if($success) {
             $user = $userResponse->json();  
-        
+
+            // Ensure the directory exists
+            $imagesDir = storage_path('app/public/spotify_images');
+            if (!is_dir($imagesDir)) {
+                mkdir($imagesDir, 0755, true);
+            }
+
+            $profileImages = $user['images'] ?? [];
+            foreach ([0 => 'large', 1 => 'small'] as $index => $size) {
+                if (isset($profileImages[$index]['url'])) {
+                    $url = $profileImages[$index]['url'];
+                    $contents = Http::get($url)->body();
+                    $basename = basename(parse_url($url, PHP_URL_PATH));
+                    $filename = uniqid("spotify_{$size}_") . '_' . $basename;
+                    file_put_contents($imagesDir . '/' . $filename, $contents);
+                    $profileImages[$index]['local_url'] = '/storage/spotify_images/' . $filename;
+                }
+            }
 
             // =====================
             // Store Pre-Save
@@ -89,7 +108,7 @@ class SmartLinkController extends Controller
             [
                 'display_name' => $user['display_name'] ?? null,
                 'email' => $user['email'] ?? null,
-                'profile_images' => $user['images'] ?? [],
+                'profile_images' => $profileImages ?? [],
                 'country' => $user['country'] ?? null,
                 'product' => $user['product'] ?? null,
                 'refresh_token' => $refreshToken,

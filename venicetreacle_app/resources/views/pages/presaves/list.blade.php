@@ -42,8 +42,8 @@
                                 $images = is_string($listItem->profile_images) 
                                     ? json_decode($listItem->profile_images, true) 
                                     : $listItem->profile_images;
-                                $smallImage = $images[2]['url'] ?? $images[0]['url'] ?? null;
-                                $largeImage = $images[0]['url'] ?? null;
+                                $smallImage = $images[2]['local_url'] ?? $images[0]['local_url'] ?? null;
+                                $largeImage = $images[0]['local_url'] ?? null;
                             @endphp
                             
                             @if($smallImage)

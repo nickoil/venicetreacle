@@ -36,8 +36,8 @@
 
                         <div class="min-w-full flex flex-wrap mb-4">
                             
-                            <x-filter-box :title="__('Page')">
-                                <x-filter-text :name="'page'" />
+                            <x-filter-box :title="__('Page Name')">
+                                <x-filter-text :name="'page_name'" />
                             </x-filter-box>
                             <x-filter-box :title="__('Source')">    
                                 <x-filter-text :name="'src'" />

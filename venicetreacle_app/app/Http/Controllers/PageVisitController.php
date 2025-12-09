@@ -28,8 +28,8 @@ class PageVisitController extends Controller
         $query = PageVisit::orderBy($sortField, $sortDirection);
 
         // search
-        if($request->page) {
-            $query->where('page', 'LIKE', "%$request->page%");
+        if($request->page_name) {
+            $query->where('page', 'LIKE', "%$request->page_name%");
         }
 
         if($request->src) {
