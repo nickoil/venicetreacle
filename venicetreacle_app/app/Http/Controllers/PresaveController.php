@@ -140,6 +140,9 @@ class PresaveController extends Controller
         foreach ($presaves as $presave) {
             try {
 
+                $success = true;
+                $message = '';
+
                 //dd($presave->refresh_token);
 
                 // Exchange refresh token for new access token

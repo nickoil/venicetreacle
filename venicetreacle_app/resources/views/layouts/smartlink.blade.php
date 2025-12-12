@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venice Treacle - {{ $title }} - Listen Now</title>
-
+    @if($now->greaterThanOrEqualTo($releaseDate))
+        <title>Venice Treacle - {{ $title }} - Listen Now</title>
+    @else
+        <title>Venice Treacle - {{ $title }} - Pre-save Now</title>         
+    @endif
+        
     <!-- cache busting -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
